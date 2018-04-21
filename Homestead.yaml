@@ -1,0 +1,22 @@
+ip: 192.168.10.10
+memory: 2048
+cpus: 1
+provider: virtualbox
+authorize: ~/.ssh/id_rsa.pub
+keys:
+    - ~/.ssh/id_rsa
+folders:
+    -
+        map: /Users/implaier/PhpstormProjects/yii2-gallery
+        to: /home/vagrant/yii2-gallery
+sites:
+    -
+        map: yii2-gallery.test
+        to: /home/vagrant/yii2-gallery/frontend/web
+    -
+        map: admin.yii2-gallery.test
+        to: /home/vagrant/yii2-gallery/backend/web
+databases:
+    - homestead
+name: yii2-gallery
+hostname: yii2-gallery
