@@ -1,36 +1,34 @@
-<?php
+<?php /** @noinspection PhpMissingParentCallCommonInspection */
 
 declare(strict_types=1);
 
-namespace app\models;
+namespace app\modules\user\models;
 
+use app\models\User;
 use Yii;
 use yii\base\Model;
 
 /**
- * LoginForm is the model behind the login form.
+ * Login form.
  *
- * @property User|null $user This property is read-only.
+ * @property \app\models\User|null $user
  */
 class LoginForm extends Model
 {
-    public $username;
+    public $email;
     public $password;
     public $rememberMe = true;
 
-    private $user = false;
+    private $user;
 
     /**
-     * @return array the validation rules
+     * {@inheritdoc}
      */
     public function rules(): array
     {
         return [
-            // username and password are both required
-            [['username', 'password'], 'required'],
-            // rememberMe must be a boolean value
+            [['email', 'password'], 'required'],
             ['rememberMe', 'boolean'],
-            // password is validated by validatePassword()
             ['password', 'validatePassword'],
         ];
     }
@@ -40,21 +38,21 @@ class LoginForm extends Model
      * This method serves as the inline validation for password.
      *
      * @param string $attribute the attribute currently being validated
-     * @param array  $params    the additional name-value pairs given in the rule
+     *
+     * @throws \yii\base\InvalidArgumentException
      */
-    public function validatePassword($attribute, $params): void
+    public function validatePassword($attribute): void
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
-
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+                $this->addError($attribute, 'Incorrect email or password.');
             }
         }
     }
 
     /**
-     * Logs in a user using the provided username and password.
+     * Logs in a user using the provided email and password.
      *
      * @throws \yii\base\InvalidArgumentException
      *
@@ -62,22 +60,28 @@ class LoginForm extends Model
      */
     public function login(): bool
     {
+        $daysInSeconds = 2592000; // 30 days
         if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
+            return Yii::$app->user->login(
+                $this->getUser(),
+                $this->rememberMe
+                    ? $daysInSeconds
+                    : 0
+            );
         }
 
         return false;
     }
 
     /**
-     * Finds user by [[username]].
+     * Finds user by [[email]].
      *
      * @return User|null
      */
-    public function getUser(): ?User
+    protected function getUser(): ?User
     {
-        if (false === $this->user) {
-            $this->user = User::findByUsername($this->username);
+        if (null === $this->user) {
+            $this->user = User::findByEmail($this->email);
         }
 
         return $this->user;

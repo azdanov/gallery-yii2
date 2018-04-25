@@ -6,8 +6,8 @@ use yii\db\Connection;
 
 return [
     'class' => Connection::class,
-    'dsn' => 'mysql:host=localhost;port=33060;dbname=yii2gallery',
-    'username' => 'user',
+    'dsn' => 'mysql:host=db;dbname=yii2gallery',
+    'username' => 'root',
     'password' => 'secret',
     'charset' => 'utf8',
 
