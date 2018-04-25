@@ -50,7 +50,9 @@ class AuthHandler
 
             return Yii::$app->user->login($user);
         }
-        if ($user = $this->createAccount($attributes)) {
+
+        $user = $this->createAccount($attributes);
+        if ($user) {
             return Yii::$app->user->login($user);
         }
 

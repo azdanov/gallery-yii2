@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace app\widgets;
 
 use Yii;
@@ -43,6 +45,8 @@ class Alert extends \yii\bootstrap\Widget
 
     /**
      * {@inheritdoc}
+     *
+     * @throws \Exception
      */
     public function run()
     {
