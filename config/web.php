@@ -3,12 +3,16 @@
 declare(strict_types=1);
 
 use app\models\User;
+use yii\authclient\clients\GitHub;
+use yii\authclient\Collection;
 use yii\caching\FileCache;
 use yii\log\FileTarget;
 use yii\swiftmailer\Mailer;
 
 $params = require __DIR__.'/params.php';
 $db = require __DIR__.'/db.php';
+
+(new Dotenv\Dotenv(\dirname(__DIR__)))->load();
 
 $config = [
     'id' => 'basic',
@@ -62,6 +66,16 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+            ],
+        ],
+        'authClientCollection' => [
+            'class' => Collection::class,
+            'clients' => [
+                'github' => [
+                    'class' => GitHub::class,
+                    'clientId' => \getenv('CLIENT_ID'),
+                    'clientSecret' => \getenv('CLIENT_SECRET'),
+                ],
             ],
         ],
     ],

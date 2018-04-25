@@ -14,7 +14,5 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: secret
             MYSQL_DATABASE: yii2gallery
-            MYSQL_USER: user
-            MYSQL_PASSWORD: secret
         ports:
-            - "33060:3306"
+            - "3306:3306"
