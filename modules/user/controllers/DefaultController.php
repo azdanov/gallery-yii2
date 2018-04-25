@@ -134,6 +134,7 @@ class DefaultController extends Controller
      * Signs user up.
      *
      * @throws \yii\base\InvalidArgumentException
+     * @throws \yii\base\Exception
      *
      * @return mixed
      */
@@ -158,6 +159,7 @@ class DefaultController extends Controller
      * Requests password reset.
      *
      * @throws \yii\base\InvalidArgumentException
+     * @throws \yii\base\Exception
      *
      * @return mixed
      */

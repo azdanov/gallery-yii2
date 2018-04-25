@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpMissingParentCallCommonInspection */
+<?php
+
+/** @noinspection PhpMissingParentCallCommonInspection */
 
 declare(strict_types=1);
 
@@ -72,6 +74,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * {@inheritdoc}
      *
+     * @throws \Exception
      * @throws NotSupportedException
      */
     public static function findIdentityByAccessToken($token, $type = null)
