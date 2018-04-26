@@ -221,9 +221,11 @@ class DefaultController extends Controller
             throw new BadRequestHttpException($e->getMessage());
         }
 
-        if ($model->load(Yii::$app->request->post()) &&
+        $isPasswordReset = $model->load(Yii::$app->request->post()) &&
             $model->validate() &&
-            $model->resetPassword()) {
+            $model->resetPassword();
+
+        if ($isPasswordReset) {
             Yii::$app->session->setFlash('success', 'New password saved.');
 
             return $this->goHome();

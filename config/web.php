@@ -31,7 +31,7 @@ $config = [
     ],
     'components' => [
         'request' => [
-            'cookieValidationKey' => 'X-zuncF4yUlBwzfKOexjxyrSD-75Zrfn',
+            'cookieValidationKey' => \getenv('COOKIE_VALIDATION'),
         ],
         'cache' => [
             'class' => FileCache::class,
