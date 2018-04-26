@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 if (!YII_ENV_DEV) {
-    Yii::$app->response->redirect('/');
+    Yii::$app->response->redirect('/')->send();
 } ?>
 <div class="user-default-index">
     <h1><?php echo $this->context->action->uniqueId; ?></h1>

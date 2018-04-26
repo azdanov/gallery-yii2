@@ -76,7 +76,7 @@ $config = [
             ],
             'rules' => [
                 '' => 'site/index',
-                '<controller:(user)>/<module:(profile)>/<action:\w+>/' => '<controller>/<module>/<action>',
+                '<controller:(user)>/<module:(profile)>/<action:\w+>/<id:\d+>' => '<controller>/<module>/<action>',
                 '<controller:(user)>/<action:[\w-]+>/' => '<controller>/default/<action>',
                 '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],
