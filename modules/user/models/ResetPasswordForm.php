@@ -31,13 +31,18 @@ class ResetPasswordForm extends Model
      */
     public function __construct($token, $config = [])
     {
-        if (empty($token) || !\is_string($token)) {
+        $isBlank = empty($token) || !\is_string($token);
+
+        if ($isBlank) {
             throw new InvalidArgumentException('Password reset token cannot be blank.');
         }
+
         $this->user = User::findByPasswordResetToken($token);
+
         if (!$this->user) {
             throw new InvalidArgumentException('Wrong password reset token.');
         }
+
         parent::__construct($config);
     }
 

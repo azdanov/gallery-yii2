@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $title;
                     <div style="color:#999;margin:1em 0;">
                         If you forgot your password you can <?php echo Html::a(
                             'reset it',
-                            ['/user/default/request-password-reset']
+                            ['/user/request-password-reset']
                         ); ?>.
                     </div>
 

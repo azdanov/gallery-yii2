@@ -8,6 +8,7 @@ use yii\authclient\Collection;
 use yii\caching\FileCache;
 use yii\log\FileTarget;
 use yii\swiftmailer\Mailer;
+use yii\web\UrlNormalizer;
 
 $params = require __DIR__.'/params.php';
 $db = require __DIR__.'/db.php';
@@ -67,7 +68,17 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enableStrictParsing' => true,
+            'normalizer' => [
+                'class' => UrlNormalizer::class,
+                // use temporary redirection instead of permanent for debugging
+                'action' => UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
+            ],
             'rules' => [
+                '' => 'site/index',
+                '<controller:(user)>/<module:(profile)>/<action:\w+>/' => '<controller>/<module>/<action>',
+                '<controller:(user)>/<action:[\w-]+>/' => '<controller>/default/<action>',
+                '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],
         ],
         'authClientCollection' => [

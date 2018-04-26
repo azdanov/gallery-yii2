@@ -45,6 +45,7 @@ class AuthHandler
         $attributes = $this->client->getUserAttributes();
 
         $auth = $this->findAuth($attributes);
+
         if ($auth) {
             $user = $auth->user;
 
@@ -52,6 +53,7 @@ class AuthHandler
         }
 
         $user = $this->createAccount($attributes);
+
         if ($user) {
             return Yii::$app->user->login($user);
         }
@@ -67,6 +69,7 @@ class AuthHandler
     private function findAuth($attributes): ?Auth
     {
         $id = ArrayHelper::getValue($attributes, 'id');
+
         $params = [
             'source_id' => $id,
             'source' => $this->client->getId(),
@@ -89,21 +92,26 @@ class AuthHandler
         $id = ArrayHelper::getValue($attributes, 'id');
         $name = ArrayHelper::getValue($attributes, 'name');
 
-        if (null !== $email && User::find()->where(['email' => $email])->exists()) {
+        $hasAccount = null !== $email && User::find()->where(['email' => $email])->exists();
+
+        if ($hasAccount) {
             return null;
         }
 
         $user = $this->createUser($email, $name);
 
         $transaction = User::getDb()->beginTransaction();
+
         if ($user->save()) {
             $auth = $this->createAuth($user->id, $id);
+
             if ($auth->save()) {
                 $transaction->commit();
 
                 return $user;
             }
         }
+
         $transaction->rollBack();
 
         return null;

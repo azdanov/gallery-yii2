@@ -105,9 +105,12 @@ class DefaultController extends Controller
         }
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+        $isLoggedIn = $model->load(Yii::$app->request->post()) && $model->login();
+
+        if ($isLoggedIn) {
             return $this->goBack();
         }
+
         $model->password = '';
 
         return $this->render(
@@ -141,9 +144,12 @@ class DefaultController extends Controller
     public function actionSignup()
     {
         $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())
-            && ($user = $model->signup())
-            && Yii::$app->getUser()->login($user)) {
+
+        $isLoggedIn = $model->load(Yii::$app->request->post()) &&
+            ($user = $model->signup()) &&
+            Yii::$app->getUser()->login($user);
+
+        if ($isLoggedIn) {
             return $this->goHome();
         }
 
@@ -166,8 +172,13 @@ class DefaultController extends Controller
     public function actionRequestPasswordReset()
     {
         $model = new PasswordResetRequestForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail()) {
+
+        $isValid = $model->load(Yii::$app->request->post()) && $model->validate();
+
+        if ($isValid) {
+            $isMailSent = $model->sendEmail();
+
+            if ($isMailSent) {
                 Yii::$app->session->setFlash(
                     'success',
                     'Check your email for further instructions.'
@@ -175,6 +186,7 @@ class DefaultController extends Controller
 
                 return $this->goHome();
             }
+
             Yii::$app->session->setFlash(
                 'error',
                 'Sorry, we are unable to reset password for the provided email address.'

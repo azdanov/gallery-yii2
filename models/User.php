@@ -107,7 +107,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Finds user by email.
+     * Find user by email.
      *
      * @param string $email
      *
@@ -119,7 +119,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Finds user by password reset token.
+     * Find user by password reset token.
      *
      * @param string $token password reset token
      *
@@ -140,7 +140,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Finds out if password reset token is valid.
+     * Find out if password reset token is valid.
      *
      * @param string $token password reset token
      *
@@ -159,7 +159,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Validates password.
+     * Validate password.
      *
      * @param string $password password to validate
      *
@@ -173,7 +173,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Generates password hash from password and sets it to the model.
+     * Generate password hash from password and sets it to the model.
      *
      * @param string $password
      *
@@ -185,7 +185,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Generates "remember me" authentication key.
+     * Generate "remember me" authentication key.
      *
      * @throws \yii\base\Exception
      */
@@ -195,7 +195,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Generates new password reset token.
+     * Generate new password reset token.
      *
      * @throws \yii\base\Exception
      */
@@ -205,7 +205,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Removes password reset token.
+     * Remove password reset token.
      */
     public function removePasswordResetToken()
     {

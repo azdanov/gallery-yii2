@@ -1,3 +1,10 @@
+<?php
+
+declare(strict_types=1);
+
+if (!YII_ENV_DEV) {
+    Yii::$app->response->redirect('/');
+} ?>
 <div class="user-default-index">
     <h1><?php echo $this->context->action->uniqueId; ?></h1>
     <p>
