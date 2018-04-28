@@ -14,7 +14,7 @@ $this->title = $title.' | '.Yii::$app->name;
 $this->params['breadcrumbs'][] = $title;
 ?>
 <div class="site-request-password-reset">
-    <h1><?php echo $title; ?></h1>
+    <h1><?= $title; ?></h1>
 
     <p>Please fill out your email. A link to reset password will be sent there.</p>
 
@@ -22,10 +22,11 @@ $this->params['breadcrumbs'][] = $title;
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
 
-            <?php echo $form->field($model, 'email')->textInput(['autofocus' => true]); ?>
+            <?= $form->field($model, 'email')
+                ->textInput(['autofocus' => true, 'placeholder' => 'Email']); ?>
 
             <div class="form-group">
-                <?php echo Html::submitButton('Send', ['class' => 'btn btn-primary']); ?>
+                <?= Html::submitButton('Send', ['class' => 'btn btn-primary']); ?>
             </div>
 
             <?php ActiveForm::end(); ?>

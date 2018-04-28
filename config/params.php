@@ -7,4 +7,5 @@ return [
     'supportEmail' => 'support@yii2gallery.com',
     'user.passwordResetTokenExpire' => 3600,
     'siteName' => 'Yii2 Gallery',
+    'secondsToRemember' => 2592000,
 ];

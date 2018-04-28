@@ -11,4 +11,4 @@ $this->title = $title.' | '.Yii::$app->name;
 $this->params['breadcrumbs'][] = $title;
 ?>
 
-<h1>Hello <?php echo Html::encode($user->username); ?></h1>
+<h1>Hello <?= Html::encode($user->username); ?></h1>

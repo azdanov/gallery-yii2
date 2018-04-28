@@ -103,7 +103,9 @@ class DefaultController extends Controller
         }
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+        $isLoginSuccessful = $model->load(Yii::$app->request->post()) && $model->login();
+
+        if ($isLoginSuccessful) {
             return $this->goBack();
         }
         $model->password = '';
@@ -139,9 +141,11 @@ class DefaultController extends Controller
     public function actionSignup()
     {
         $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())
+        $isSignupSuccessful = $model->load(Yii::$app->request->post())
             && ($user = $model->signup())
-            && Yii::$app->getUser()->login($user)) {
+            && Yii::$app->getUser()->login($user);
+
+        if ($isSignupSuccessful) {
             return $this->goHome();
         }
 
@@ -164,7 +168,9 @@ class DefaultController extends Controller
     public function actionRequestPasswordReset()
     {
         $model = new PasswordResetRequestForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        $isEmailValid = $model->load(Yii::$app->request->post()) && $model->validate();
+
+        if ($isEmailValid) {
             if ($model->sendEmail()) {
                 Yii::$app->session->setFlash(
                     'success',
@@ -173,6 +179,7 @@ class DefaultController extends Controller
 
                 return $this->goHome();
             }
+
             Yii::$app->session->setFlash(
                 'error',
                 'Sorry, we are unable to reset password for the provided email address.'
@@ -207,9 +214,10 @@ class DefaultController extends Controller
             throw new BadRequestHttpException($e->getMessage());
         }
 
-        if ($model->load(Yii::$app->request->post()) &&
-            $model->validate() &&
-            $model->resetPassword()) {
+        $isPasswordSaved = $model->load(Yii::$app->request->post())
+            && $model->validate() && $model->resetPassword();
+
+        if ($isPasswordSaved) {
             Yii::$app->session->setFlash('success', 'New password saved.');
 
             return $this->goHome();
