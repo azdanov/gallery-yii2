@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpMissingParentCallCommonInspection */
+<?php
+
+/** @noinspection PhpMissingParentCallCommonInspection */
 
 declare(strict_types=1);
 
@@ -45,6 +47,18 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function attributeLabels(): array
+    {
+        return [
+            'username' => 'Full Name',
+            'password' => 'Password',
+            'email' => 'Email',
         ];
     }
 

@@ -38,12 +38,16 @@ class LoginForm extends Model
      * This method serves as the inline validation for password.
      *
      * @param string $attribute the attribute currently being validated
+     *
+     * @throws \yii\base\InvalidArgumentException
      */
     public function validatePassword($attribute): void
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
-            if (!$user || !$user->validatePassword($this->password)) {
+            $isPasswordInvalid = !$user || !$user->validatePassword($this->password);
+
+            if ($isPasswordInvalid) {
                 $this->addError($attribute, 'Incorrect email or password.');
             }
         }
@@ -58,14 +62,12 @@ class LoginForm extends Model
      */
     public function login(): bool
     {
-        $daysInSeconds = 2592000; // 30 days
+        $secondsToRemember = $this->rememberMe
+            ? Yii::$app->params['secondsToRemember']
+            : 0;
+
         if ($this->validate()) {
-            return Yii::$app->user->login(
-                $this->getUser(),
-                $this->rememberMe
-                    ? $daysInSeconds
-                    : 0
-            );
+            return Yii::$app->user->login($this->getUser(), $secondsToRemember);
         }
 
         return false;
