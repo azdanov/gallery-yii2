@@ -1,4 +1,4 @@
-version: '3'
+version: '3.3'
 services:
     php:
         build: .
@@ -11,8 +11,15 @@ services:
           - db
     db:
         image: mysql:5.7
+        restart: always
         environment:
             MYSQL_ROOT_PASSWORD: secret
             MYSQL_DATABASE: yii2gallery
+            MYSQL_USER: yii2
+            MYSQL_PASSWORD: yii2
+        volumes:
+            - db_data:/var/lib/mysql
         ports:
-            - "3306:3306"
+            - '3306:3306'
+volumes:
+    db_data:
