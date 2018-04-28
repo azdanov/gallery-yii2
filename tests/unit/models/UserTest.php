@@ -36,8 +36,8 @@ class UserTest extends \Codeception\Test\Unit
     public function testValidateUser($user)
     {
         $user = User::findByUsername('admin');
-        expect_that($user->validateAuthKey('test100key'));
-        expect_not($user->validateAuthKey('test102key'));
+        expect_that($user->validateauth_key('test100key'));
+        expect_not($user->validateauth_key('test102key'));
 
         expect_that($user->validatePassword('admin'));
         expect_not($user->validatePassword('123456'));

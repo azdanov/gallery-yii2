@@ -31,15 +31,6 @@ AppAsset::register($this);
 
     <div class="wrap">
         <?php
-        NavBar::begin(
-            [
-                'brandLabel' => Yii::$app->name,
-                'brandUrl' => Yii::$app->homeUrl,
-                'options' => [
-                    'class' => 'navbar-inverse navbar-fixed-top',
-                ],
-            ]
-        );
         $menuItems = [
             ['label' => 'Home', 'url' => ['/site/index']],
         ];
@@ -52,6 +43,16 @@ AppAsset::register($this);
                 ['class' => 'btn btn-link logout']
             ).Html::endForm().'</li>';
         }
+
+        NavBar::begin(
+            [
+                'brandLabel' => Yii::$app->name,
+                'brandUrl' => Yii::$app->homeUrl,
+                'options' => [
+                    'class' => 'navbar-inverse navbar-fixed-top',
+                ],
+            ]
+        );
         echo Nav::widget(
             [
                 'options' => ['class' => 'navbar-nav navbar-right'],
@@ -74,7 +75,7 @@ AppAsset::register($this);
 
     <footer class="footer">
         <div class="container">
-            <p class="pull-left">&copy; My Company <?php echo \date('Y'); ?></p>
+            <p class="pull-left">&copy; Yii2 Gallery <?php echo \date('Y'); ?></p>
 
             <p class="pull-right"><?php echo Yii::powered(); ?></p>
         </div>

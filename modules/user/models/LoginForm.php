@@ -1,4 +1,4 @@
-<?php /** @noinspection PhpMissingParentCallCommonInspection */
+<?php
 
 declare(strict_types=1);
 
@@ -30,23 +30,19 @@ class LoginForm extends Model
             [['email', 'password'], 'required'],
             ['rememberMe', 'boolean'],
             ['password', 'validatePassword'],
-            ['email', 'email'],
         ];
     }
 
     /**
-     * Validate the password.
+     * Validates the password.
      * This method serves as the inline validation for password.
      *
      * @param string $attribute the attribute currently being validated
-     *
-     * @throws \yii\base\InvalidArgumentException
      */
     public function validatePassword($attribute): void
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
-
             if (!$user || !$user->validatePassword($this->password)) {
                 $this->addError($attribute, 'Incorrect email or password.');
             }
@@ -54,7 +50,7 @@ class LoginForm extends Model
     }
 
     /**
-     * Log in a user using the provided email and password.
+     * Logs in a user using the provided email and password.
      *
      * @throws \yii\base\InvalidArgumentException
      *
@@ -63,7 +59,6 @@ class LoginForm extends Model
     public function login(): bool
     {
         $daysInSeconds = 2592000; // 30 days
-
         if ($this->validate()) {
             return Yii::$app->user->login(
                 $this->getUser(),
@@ -77,7 +72,7 @@ class LoginForm extends Model
     }
 
     /**
-     * Find user by [[email]].
+     * Finds user by [[email]].
      *
      * @return User|null
      */
