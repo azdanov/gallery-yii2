@@ -20,6 +20,7 @@ services:
         volumes:
             - db_data:/var/lib/mysql
         ports:
+            # Used to connect external tools
             - '3306:3306'
 volumes:
     db_data:

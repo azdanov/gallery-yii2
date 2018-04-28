@@ -1,12 +1,10 @@
-<?php
-
-/** @noinspection PhpMissingParentCallCommonInspection */
+<?php /** @noinspection PhpMissingParentCallCommonInspection */
 
 declare(strict_types=1);
 
-// phpcs:disable Zend.NamingConventions.ValidVariableName.NotCamelCaps
-
 namespace app\modules\user\models;
+
+// phpcs:disable Zend.NamingConventions.ValidVariableName.NotCamelCaps
 
 use app\models\User;
 use Yii;
