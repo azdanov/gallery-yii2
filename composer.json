@@ -3,7 +3,7 @@
   "description": "Yii 2 Basic Gallery Demo Project",
   "keywords": ["yii2", "framework", "basic", "project", "demo"],
   "homepage": "http://www.yiiframework.com/",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "type": "project",
   "prefer-stable": true,
   "license": "MIT",
