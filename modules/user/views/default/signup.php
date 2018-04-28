@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $title;
 
                     <?php echo $form->field($model, 'email'); ?>
 
-                    <?php echo $form->field($model, 'password')->passwordInput(); ?>
+                    <?php echo $form->field($model, 'password')->passwordInput()->hint('Minimum 6 characters'); ?>
 
                     <div class="form-group">
                         <?php echo Html::submitButton(
