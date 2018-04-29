@@ -17,15 +17,19 @@ use yii\web\IdentityInterface;
 /**
  * User model.
  *
- * @property int    $id
- * @property string $username
- * @property string $password_hash
- * @property string $password_reset_token
- * @property string $email
- * @property string $auth_key
- * @property int    $status
- * @property int    $created_at
- * @property int    $updated_at
+ * @property int    $id                   [int(11)]
+ * @property string $username             [varchar(255)]
+ * @property string $auth_key             [varchar(32)]
+ * @property string $password_hash        [varchar(255)]
+ * @property string $password_reset_token [varchar(255)]
+ * @property string $email                [varchar(255)]
+ * @property int    $status               [smallint(6)]
+ * @property int    $created_at           [int(11)]
+ * @property int    $updated_at           [int(11)]
+ * @property string $about
+ * @property int    $type                 [int(3)]
+ * @property string $picture              [varchar(255)]
+ * @property string $nickname             [varchar(70)]
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -111,6 +115,14 @@ class User extends ActiveRecord implements IdentityInterface
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
 
         return $timestamp + $expire >= \time();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNickname()
+    {
+        return $this->nickname ?: $this->getId();
     }
 
     /**

@@ -69,7 +69,6 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'enableStrictParsing' => true,
             'normalizer' => [
                 'class' => UrlNormalizer::class,
                 // use temporary redirection instead of permanent for debugging
@@ -77,9 +76,7 @@ $config = [
             ],
             'rules' => [
                 '' => 'site/index',
-                '<controller:(user)>/<module:(profile)>/<action:\w+>/<id:\d+>' => '<controller>/<module>/<action>',
-                '<controller:(user)>/<action:[\w-]+>/' => '<controller>/default/<action>',
-                '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
+                'profile/<identifier:\w+>' => 'user/profile/view',
             ],
         ],
         'authClientCollection' => [

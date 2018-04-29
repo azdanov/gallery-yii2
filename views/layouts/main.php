@@ -36,10 +36,10 @@ AppAsset::register($this);
         ];
 
         if (Yii::$app->user->isGuest) {
-            $menuItems[] = ['label' => 'Signup', 'url' => ['/user/signup']];
-            $menuItems[] = ['label' => 'Login', 'url' => ['/user/login']];
+            $menuItems[] = ['label' => 'Signup', 'url' => ['/user/default/signup']];
+            $menuItems[] = ['label' => 'Login', 'url' => ['/user/default/login']];
         } else {
-            $menuItems[] = '<li>'.Html::beginForm(['/user/logout']).Html::submitButton(
+            $menuItems[] = '<li>'.Html::beginForm(['/user/default/logout']).Html::submitButton(
                 'Logout ('.Yii::$app->user->identity->username.')',
                 ['class' => 'btn btn-link logout']
             ).Html::endForm().'</li>';

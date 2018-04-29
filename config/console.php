@@ -6,11 +6,13 @@ use yii\caching\FileCache;
 use yii\gii\Module;
 use yii\log\FileTarget;
 
+(new Dotenv\Dotenv(\dirname(__DIR__)))->load();
+
 $params = require __DIR__.'/params.php';
 $db = require __DIR__.'/db.php';
 
 $config = [
-    'id' => 'basic-console',
+    'id' => 'yii2gallery_console',
     'basePath' => \dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'app\commands',
