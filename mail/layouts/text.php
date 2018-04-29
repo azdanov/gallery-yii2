@@ -8,6 +8,6 @@ declare(strict_types=1);
 
 <?php $this->beginPage(); ?>
 <?php $this->beginBody(); ?>
-<?php echo $content; ?>
+<?= $content; ?>
 <?php $this->endBody(); ?>
 <?php $this->endPage();

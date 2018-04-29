@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $title;
 <div class="site-signup">
     <div class="row">
         <div class="col-lg-7 col-lg-offset-1">
-            <h1><?php echo $title; ?></h1>
+            <h1><?= $title; ?></h1>
 
             <p>Please fill out the following fields to signup:</p>
 
@@ -25,16 +25,18 @@ $this->params['breadcrumbs'][] = $title;
                 <div class="col-lg-10">
                     <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
-                    <?php echo $form->field($model, 'username')->textInput(
-                        ['autofocus' => true]
-                    ); ?>
+                    <?= $form->field($model, 'username')
+                        ->textInput(['autofocus' => true, 'placeholder' => 'Full Name']); ?>
 
-                    <?php echo $form->field($model, 'email'); ?>
+                    <?= $form->field($model, 'email')
+                        ->textInput(['placeholder' => 'Email']); ?>
 
-                    <?php echo $form->field($model, 'password')->passwordInput()->hint('Minimum 6 characters'); ?>
+                    <?= $form->field($model, 'password')
+                        ->passwordInput(['placeholder' => 'Password'])
+                        ->hint('Minimum 6 characters'); ?>
 
                     <div class="form-group">
-                        <?php echo Html::submitButton(
+                        <?= Html::submitButton(
                             'Signup',
                             ['class' => 'btn btn-primary', 'name' => 'signup-button']
                         ); ?>
@@ -47,7 +49,7 @@ $this->params['breadcrumbs'][] = $title;
         <div class="col-lg-3">
             <h2>Instant Login</h2>
             <br>
-            <?php echo yii\authclient\widgets\AuthChoice::widget(
+            <?= yii\authclient\widgets\AuthChoice::widget(
                 [
                     'baseAuthUrl' => ['/user/default/auth'],
                     'popupMode' => false,
