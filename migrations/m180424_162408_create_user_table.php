@@ -18,34 +18,39 @@ class m180424_162408_create_user_table extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('{{%user}}', [
-            'id' => $this->primaryKey(),
-            'username' => $this->string()->notNull()->unique(),
-            'auth_key' => $this->string(32)->notNull(),
-            'password_hash' => $this->string()->notNull(),
-            'password_reset_token' => $this->string()->unique(),
-            'email' => $this->string()->notNull()->unique(),
-            'status' => $this->smallInteger()->notNull()->defaultValue(10),
-            'created_at' => $this->integer()->notNull(),
-            'updated_at' => $this->integer()->notNull(),
-        ], $tableOptions);
+        $this->createTable(
+            '{{%user}}',
+            [
+                '[[id]]' => $this->primaryKey(),
+                '[[username]]' => $this->string()->notNull()->unique(),
+                '[[auth_key]]' => $this->string(32)->notNull(),
+                '[[password_hash]]' => $this->string()->notNull(),
+                '[[password_reset_token]]' => $this->string()->unique(),
+                '[[email]]' => $this->string()->notNull()->unique(),
+                '[[status]]' => $this->smallInteger()->notNull()->defaultValue(10),
+                '[[created_at]]' => $this->integer()->notNull(),
+                '[[updated_at]]' => $this->integer()->notNull(),
+            ],
+            $tableOptions
+        );
 
         $this->createTable(
-            'auth',
+            '{{%auth}}',
             [
-                'id' => $this->primaryKey(),
-                'user_id' => $this->integer()->notNull(),
-                'source' => $this->string()->notNull(),
-                'source_id' => $this->string()->notNull(),
-            ]
+                '[[id]]' => $this->primaryKey(),
+                '[[user_id]]' => $this->integer()->notNull(),
+                '[[source]]' => $this->string()->notNull(),
+                '[[source_id]]' => $this->string()->notNull(),
+            ],
+            $tableOptions
         );
 
         $this->addForeignKey(
-            'fk-auth-user_id-user-id',
-            'auth',
-            'user_id',
-            'user',
-            'id',
+            '[[fk-auth-user_id-user-id]]',
+            '{{%auth}}',
+            '[[user_id]]',
+            '{{%user}}',
+            '[[id]]',
             'CASCADE',
             'CASCADE'
         );
@@ -56,7 +61,7 @@ class m180424_162408_create_user_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('auth');
+        $this->dropTable('{{%auth}}');
         $this->dropTable('{{%user}}');
     }
 }

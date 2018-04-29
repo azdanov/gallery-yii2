@@ -10,16 +10,17 @@ use yii\log\FileTarget;
 use yii\swiftmailer\Mailer;
 use yii\web\UrlNormalizer;
 
+(new Dotenv\Dotenv(\dirname(__DIR__)))->load();
+
 $params = require __DIR__.'/params.php';
 $db = require __DIR__.'/db.php';
-
-(new Dotenv\Dotenv(\dirname(__DIR__)))->load();
 
 $config = [
     'id' => 'yii2gallery',
     'name' => $params['siteName'],
     'basePath' => \dirname(__DIR__),
     'bootstrap' => ['log'],
+    'sourceLanguage' => 'en-US',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
