@@ -1,14 +1,15 @@
 version: '3.3'
 services:
-    php:
+    app:
         build: .
         volumes:
-          - ~/.composer-docker/cache:/root/.composer/cache:delegated
-          - ./:/app:delegated
+            - ~/.composer-docker/cache:/root/.composer/cache:delegated
+            - ./:/app:delegated
         ports:
-          - '8000:80'
+            - 8000:80
         depends_on:
-          - db
+            - db
+            - cache
     db:
         image: mysql:5.7
         restart: always
@@ -20,7 +21,14 @@ services:
         volumes:
             - db_data:/var/lib/mysql
         ports:
-            # Used to connect external tools
-            - '3306:3306'
+            - 3306:3306
+    cache:
+          image: redis:latest
+          restart: always
+          volumes:
+            - cache_data:/data
+          ports:
+            - 6379:6379
 volumes:
     db_data:
+    cache_data:
