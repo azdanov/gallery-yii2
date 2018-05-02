@@ -84,6 +84,7 @@ $config = [
             'rules' => [
                 '' => 'site/index',
                 'profile/<identifier:\w+>' => 'user/profile/view',
+                'profile/update/<id:\d+>' => 'user/profile/update',
             ],
         ],
         'authClientCollection' => [

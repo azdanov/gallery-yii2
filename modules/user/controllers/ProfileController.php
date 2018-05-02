@@ -38,6 +38,34 @@ class ProfileController extends Controller
     }
 
     /**
+     * Updates an existing User model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     *
+     * @param string $id
+     *
+     * @throws \yii\base\InvalidArgumentException
+     * @throws NotFoundHttpException
+     *
+     * @return mixed
+     */
+    public function actionUpdate(string $id)
+    {
+        $user = $this->findUser($id);
+
+        $isSaved = $user->load(Yii::$app->request->post()) && $user->save();
+
+        if ($isSaved) {
+            return $this->redirect(
+                ['/user/profile/view', 'identifier' => $id]
+            );
+        }
+
+        return $this->render('update', [
+            'user' => $user,
+        ]);
+    }
+
+    /**
      * @param string $id
      *
      * @throws NotFoundHttpException
@@ -50,8 +78,17 @@ class ProfileController extends Controller
             return $this->redirect(['/user/default/login']);
         }
 
-        /* @var $currentUser User */
         $currentUser = Yii::$app->user->identity;
+
+        if ($currentUser->getId() === (int) $id) {
+            Yii::$app->session->setFlash('error', 'Cannot subscribe to your own profile.');
+
+            return $this->redirect(
+                ['/user/profile/view', 'identifier' => $id]
+            );
+        }
+
+        /* @var $currentUser User */
 
         $userToSubscribe = $this->findUser($id);
 
@@ -77,6 +114,15 @@ class ProfileController extends Controller
 
         /* @var $currentUser User */
         $currentUser = Yii::$app->user->identity;
+
+        if ($currentUser->getId() === (int) $id) {
+            Yii::$app->session->setFlash('error', 'Cannot unsubscribe from your own profile.');
+
+            return $this->redirect(
+                ['/user/profile/view', 'identifier' => $id]
+            );
+        }
+
         $userToUnsubscribe = $this->findUser($id);
 
         $currentUser->unsubscribeUser($userToUnsubscribe);
