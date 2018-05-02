@@ -5,7 +5,7 @@ declare(strict_types=1);
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 
-/* @var $model \app\modules\user\models\SignupForm */
+/* @var $model \app\modules\user\models\forms\SignupForm */
 
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;

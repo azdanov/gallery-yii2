@@ -42,7 +42,7 @@ $currentUser = Yii::$app->user->identity;
             $menuItems[] = ['label' => 'Signup', 'url' => ['/user/default/signup']];
             $menuItems[] = ['label' => 'Login', 'url' => ['/user/default/login']];
         } else {
-            $menuItems[] = ['label' => 'Profile', 'url' => [Url::to(['/user/profile/update/', 'id' => $currentUser->id])]];
+            $menuItems[] = ['label' => 'Profile', 'url' => [Url::to(['/user/profile/view', 'identifier' => $currentUser->id])]];
             $menuItems[] = '<li>'.Html::beginForm(['/user/default/logout']).Html::submitButton(
                 'Logout ('.$currentUser->username.')',
                 ['class' => 'btn btn-link logout']

@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace app\models;
 
+use app\components\StorageInterface;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -113,7 +114,7 @@ class User extends ActiveRecord implements IdentityInterface
         }
 
         $timestamp = (int) \substr($token, \strrpos($token, '_') + 1);
-        $expire = Yii::$app->params['user.passwordResetTokenExpire'];
+        $expire = Yii::$app->params['passwordResetTokenExpire'];
 
         return $timestamp + $expire >= \time();
     }
@@ -142,6 +143,26 @@ class User extends ActiveRecord implements IdentityInterface
     public function getAuthKey(): string
     {
         return $this->auth_key;
+    }
+
+    /**
+     * Get users profile picture.
+     * Return a default picture if not found.
+     *
+     * @throws \yii\base\InvalidConfigException
+     *
+     * @return string
+     */
+    public function getPicture(): string
+    {
+        if ($this->picture) {
+            /** @var StorageInterface $storage */
+            $storage = Yii::$app->get('storage');
+
+            return $storage->getFile($this->picture);
+        }
+
+        return Yii::$app->params['defaultPicture'];
     }
 
     /**

@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use app\components\Storage;
 use app\models\User;
 use yii\authclient\clients\GitHub;
 use yii\authclient\Collection;
@@ -73,6 +74,9 @@ $config = [
             'port' => \getenv('CACHE_PORT'),
             'database' => 0,
         ],
+        'storage' => [
+            'class' => Storage::class,
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -84,7 +88,6 @@ $config = [
             'rules' => [
                 '' => 'site/index',
                 'profile/<identifier:\w+>' => 'user/profile/view',
-                'profile/update/<id:\d+>' => 'user/profile/update',
             ],
         ],
         'authClientCollection' => [
@@ -105,13 +108,13 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => \yii\debug\Module::class,
-        'allowedIPs' => ['127.0.0.1', '::1', '172.20.0.1'],
+        'allowedIPs' => ['127.0.0.1', '::1', '172.18.0.1'],
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => \yii\gii\Module::class,
-        'allowedIPs' => ['127.0.0.1', '::1', '172.20.0.1'],
+        'allowedIPs' => ['127.0.0.1', '::1', '172.18.0.1'],
     ];
 }
 
