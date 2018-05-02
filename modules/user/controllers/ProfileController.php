@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace app\modules\user\controllers;
 
+use app\components\StorageInterface;
 use app\models\User;
+use app\modules\user\models\forms\PictureForm;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
+use yii\web\UploadedFile;
 
 /**
  * Profile controller for the `user` module.
@@ -28,13 +31,37 @@ class ProfileController extends Controller
         /** @var User $currentUser */
         $currentUser = Yii::$app->user->identity;
 
+        $pictureForm = new PictureForm();
+
         return $this->render(
             'view',
             [
                 'user' => $this->findUser($identifier),
                 'currentUser' => $currentUser,
+                'pictureForm' => $pictureForm,
             ]
         );
+    }
+
+    /**
+     * @param string $identifier
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return mixed
+     */
+    private function findUser(string $identifier)
+    {
+        $user = User::find()
+            ->where(['nickname' => $identifier])
+            ->orWhere(['id' => $identifier])
+            ->one();
+
+        if (!$user) {
+            throw new NotFoundHttpException();
+        }
+
+        return $user;
     }
 
     /**
@@ -60,9 +87,77 @@ class ProfileController extends Controller
             );
         }
 
-        return $this->render('update', [
-            'user' => $user,
-        ]);
+        return $this->render('update');
+    }
+
+    /**
+     * Handle profile image upload via ajax request.
+     *
+     * @throws \yii\base\InvalidArgumentException
+     * @throws \yii\base\InvalidConfigException
+     *
+     * @return array
+     */
+    public function actionUploadPicture(): array
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $pictureForm = new PictureForm();
+        $pictureForm->picture = UploadedFile::getInstance($pictureForm, 'picture');
+
+        if ($pictureForm->validate()) {
+            /** @var User $user */
+            $user = Yii::$app->user->identity; // FIXME: Make sure user is logged in
+            /** @var StorageInterface $storage */
+            $storage = Yii::$app->get('storage');
+
+            $pictureLocation = $storage->saveUploadedFile($pictureForm->picture);
+
+            $user->picture = $pictureLocation;
+            $isPictureSaved = $user->save(false, ['picture']);
+
+            if ($isPictureSaved) {
+                return [
+                    'success' => true,
+                    'pictureUri' => $storage->getFile($user->picture),
+                ];
+            }
+        }
+
+        return ['success' => false, 'errors' => $pictureForm->getErrors()];
+    }
+
+    /**
+     * Delete this users picture.
+     *
+     * @throws \yii\base\InvalidConfigException
+     *
+     * @return Response
+     */
+    public function actionDeletePicture(): Response
+    {
+        /** @var User $currentUser */
+        $currentUser = Yii::$app->user->identity;
+
+        $hasPicture = $currentUser && $currentUser->picture;
+
+        if ($hasPicture) {
+            /** @var StorageInterface $storage */
+            $storage = Yii::$app->get('storage');
+            $isDeleted = $storage->deleteFile($currentUser->picture);
+            $currentUser->picture = null;
+            $isSaved = $currentUser->save(false, ['picture']);
+
+            if ($isDeleted && $isSaved) {
+                Yii::$app->session->setFlash('success', 'Profile image has been deleted.');
+            }
+        } else {
+            Yii::$app->session->setFlash('error', 'Could not delete profile picture.');
+        }
+
+        return $this->redirect(
+            ['/user/profile/view', 'identifier' => $currentUser->id]
+        );
     }
 
     /**
@@ -130,26 +225,5 @@ class ProfileController extends Controller
         return $this->redirect(
             ['/user/profile/view', 'identifier' => $userToUnsubscribe->getNickname()]
         );
-    }
-
-    /**
-     * @param string $identifier
-     *
-     * @throws NotFoundHttpException
-     *
-     * @return mixed
-     */
-    private function findUser(string $identifier)
-    {
-        $user = User::find()
-            ->where(['nickname' => $identifier])
-            ->orWhere(['id' => $identifier])
-            ->one();
-
-        if (!$user) {
-            throw new NotFoundHttpException();
-        }
-
-        return $user;
     }
 }

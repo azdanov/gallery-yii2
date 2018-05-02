@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace app\modules\user\controllers;
 
 use app\modules\user\components\AuthHandler;
-use app\modules\user\models\LoginForm;
-use app\modules\user\models\PasswordResetRequestForm;
-use app\modules\user\models\ResetPasswordForm;
-use app\modules\user\models\SignupForm;
+use app\modules\user\models\forms\LoginForm;
+use app\modules\user\models\forms\PasswordResetRequestForm;
+use app\modules\user\models\forms\ResetPasswordForm;
+use app\modules\user\models\forms\SignupForm;
 use Yii;
 use yii\authclient\AuthAction;
 use yii\authclient\ClientInterface;
