@@ -12,4 +12,8 @@ return [
     'storagePath' => '@app/web/uploads/',
     'storageUri' => '/uploads/',
     'defaultPicture' => '/img/profile_default_image.png',
+    'profilePictureSize' => [
+        'width' => 1024,
+        'height' => 1024,
+    ],
 ];

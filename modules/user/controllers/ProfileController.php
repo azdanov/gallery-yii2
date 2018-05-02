@@ -44,27 +44,6 @@ class ProfileController extends Controller
     }
 
     /**
-     * @param string $identifier
-     *
-     * @throws NotFoundHttpException
-     *
-     * @return mixed
-     */
-    private function findUser(string $identifier)
-    {
-        $user = User::find()
-            ->where(['nickname' => $identifier])
-            ->orWhere(['id' => $identifier])
-            ->one();
-
-        if (!$user) {
-            throw new NotFoundHttpException();
-        }
-
-        return $user;
-    }
-
-    /**
      * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
      *
@@ -139,20 +118,10 @@ class ProfileController extends Controller
         /** @var User $currentUser */
         $currentUser = Yii::$app->user->identity;
 
-        $hasPicture = $currentUser && $currentUser->picture;
-
-        if ($hasPicture) {
-            /** @var StorageInterface $storage */
-            $storage = Yii::$app->get('storage');
-            $isDeleted = $storage->deleteFile($currentUser->picture);
-            $currentUser->picture = null;
-            $isSaved = $currentUser->save(false, ['picture']);
-
-            if ($isDeleted && $isSaved) {
-                Yii::$app->session->setFlash('success', 'Profile image has been deleted.');
-            }
+        if ($this->deletePicture()) {
+            Yii::$app->session->setFlash('success', 'Profile picture is deleted.');
         } else {
-            Yii::$app->session->setFlash('error', 'Could not delete profile picture.');
+            Yii::$app->session->setFlash('error', 'Profile picture is not deleted.');
         }
 
         return $this->redirect(
@@ -225,5 +194,49 @@ class ProfileController extends Controller
         return $this->redirect(
             ['/user/profile/view', 'identifier' => $userToUnsubscribe->getNickname()]
         );
+    }
+
+    /**
+     * @param string $identifier
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return mixed
+     */
+    private function findUser(string $identifier)
+    {
+        $user = User::find()
+            ->where(['nickname' => $identifier])
+            ->orWhere(['id' => $identifier])
+            ->one();
+
+        if (!$user) {
+            throw new NotFoundHttpException();
+        }
+
+        return $user;
+    }
+
+    /**
+     * @throws \yii\base\InvalidConfigException
+     *
+     * @return bool
+     */
+    private function deletePicture(): bool
+    {
+        /** @var User $currentUser */
+        $currentUser = Yii::$app->user->identity;
+
+        if (!$currentUser->picture) {
+            return false;
+        }
+
+        $storage = Yii::$app->get('storage');
+        $isDeleted = $storage && $storage->deleteFile($currentUser->picture);
+
+        $currentUser->picture = null;
+        $isSaved = $currentUser->save(false, ['picture']);
+
+        return $isDeleted && $isSaved;
     }
 }
