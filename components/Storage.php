@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace app\components;
 
-use Exception;
 use Intervention\Image\ImageManager;
 use Yii;
 use yii\base\Component;
@@ -36,19 +35,19 @@ class Storage extends Component implements StorageInterface
 
         $path = $this->preparePath($file);
 
-        $isFileSaved = $path && $file->saveAs($path);
+        $width = Yii::$app->params['profilePictureSize']['width'];
+        $height = Yii::$app->params['profilePictureSize']['height'];
 
-        if ($isFileSaved) {
-            $manager
-                ->make($path)
-                ->widen(1024)
-                ->save($path, 75)
-                ->destroy();
+        $manager
+            ->make($file->tempName)
+            ->resize($width, $height, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })
+            ->save($path, 75)
+            ->destroy();
 
-            return $this->fileName;
-        }
-
-        return null;
+        return $this->fileName;
     }
 
     /**
@@ -72,14 +71,11 @@ class Storage extends Component implements StorageInterface
     {
         $filePath = $this->getStoragePath().$fileName;
 
-        try {
-            $result = \unlink($filePath);
-        } catch (Exception $exception) {
-            Yii::error($exception->getMessage());
-            $result = false;
+        if (\file_exists($filePath)) {
+            return \unlink($filePath);
         }
 
-        return $result;
+        return true;
     }
 
     /**
