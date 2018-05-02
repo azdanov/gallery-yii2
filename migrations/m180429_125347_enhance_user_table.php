@@ -12,10 +12,10 @@ class m180429_125347_enhance_user_table extends Migration
      */
     public function safeUp()
     {
-        $this->addColumn('{{%user}}', 'about', $this->text());
-        $this->addColumn('{{%user}}', 'type', $this->integer(3));
-        $this->addColumn('{{%user}}', 'nickname', $this->string(70));
-        $this->addColumn('{{%user}}', 'picture', $this->string());
+        $this->addColumn('{{%user}}', '[[nickname]]', $this->string(70));
+        $this->addColumn('{{%user}}', '[[type]]', $this->integer(3));
+        $this->addColumn('{{%user}}', '[[about]]', $this->text());
+        $this->addColumn('{{%user}}', '[[picture]]', $this->string());
     }
 
     /**
@@ -23,9 +23,9 @@ class m180429_125347_enhance_user_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropColumn('{{%user}}', 'picture');
-        $this->dropColumn('{{%user}}', 'nickname');
-        $this->dropColumn('{{%user}}', 'type');
-        $this->dropColumn('{{%user}}', 'about');
+        $this->dropColumn('{{%user}}', '[[nickname]]');
+        $this->dropColumn('{{%user}}', '[[type]]');
+        $this->dropColumn('{{%user}}', '[[about]]');
+        $this->dropColumn('{{%user}}', '[[picture]]');
     }
 }

@@ -7,6 +7,7 @@ use yii\authclient\clients\GitHub;
 use yii\authclient\Collection;
 use yii\caching\FileCache;
 use yii\log\FileTarget;
+use yii\redis\Connection;
 use yii\swiftmailer\Mailer;
 use yii\web\UrlNormalizer;
 
@@ -66,6 +67,12 @@ $config = [
             ],
         ],
         'db' => $db,
+        'redis' => [
+            'class' => Connection::class,
+            'hostname' => \getenv('CACHE_HOSTNAME'),
+            'port' => \getenv('CACHE_PORT'),
+            'database' => 0,
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -77,6 +84,7 @@ $config = [
             'rules' => [
                 '' => 'site/index',
                 'profile/<identifier:\w+>' => 'user/profile/view',
+                'profile/update/<id:\d+>' => 'user/profile/update',
             ],
         ],
         'authClientCollection' => [
