@@ -7,6 +7,7 @@ use yii\authclient\clients\GitHub;
 use yii\authclient\Collection;
 use yii\caching\FileCache;
 use yii\log\FileTarget;
+use yii\redis\Connection;
 use yii\swiftmailer\Mailer;
 use yii\web\UrlNormalizer;
 
@@ -66,10 +67,15 @@ $config = [
             ],
         ],
         'db' => $db,
+        'redis' => [
+            'class' => Connection::class,
+            'hostname' => \getenv('CACHE_HOSTNAME'),
+            'port' => \getenv('CACHE_PORT'),
+            'database' => 0,
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'enableStrictParsing' => true,
             'normalizer' => [
                 'class' => UrlNormalizer::class,
                 // use temporary redirection instead of permanent for debugging
@@ -77,9 +83,8 @@ $config = [
             ],
             'rules' => [
                 '' => 'site/index',
-                '<controller:(user)>/<module:(profile)>/<action:\w+>/<id:\d+>' => '<controller>/<module>/<action>',
-                '<controller:(user)>/<action:[\w-]+>/' => '<controller>/default/<action>',
-                '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
+                'profile/<identifier:\w+>' => 'user/profile/view',
+                'profile/update/<id:\d+>' => 'user/profile/update',
             ],
         ],
         'authClientCollection' => [

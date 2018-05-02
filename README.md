@@ -26,11 +26,11 @@ The minimum requirement by this project that your Web server supports PHP 7.2.0.
 
 Update your vendor packages
 
-    docker-compose run --rm php composer update --prefer-dist
+    docker-compose run --rm app composer update --prefer-dist
 
 Run the installation triggers (creating cookie validation code)
 
-    docker-compose run --rm php composer install
+    docker-compose run --rm app composer install
 
 Start the container
 
@@ -38,7 +38,7 @@ Start the container
 
 Execute command inside php container
 
-    docker-compose exec php php yii help
+    docker-compose exec app php yii help
 
 You can then access the application through the following URL:
 

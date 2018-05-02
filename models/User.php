@@ -12,20 +12,25 @@ use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\redis\Connection;
 use yii\web\IdentityInterface;
 
 /**
  * User model.
  *
- * @property int    $id
- * @property string $username
- * @property string $password_hash
- * @property string $password_reset_token
- * @property string $email
- * @property string $auth_key
- * @property int    $status
- * @property int    $created_at
- * @property int    $updated_at
+ * @property int    $id                   [int(11)]
+ * @property string $username             [varchar(255)]
+ * @property string $auth_key             [varchar(32)]
+ * @property string $password_hash        [varchar(255)]
+ * @property string $password_reset_token [varchar(255)]
+ * @property string $email                [varchar(255)]
+ * @property int    $status               [smallint(6)]
+ * @property int    $created_at           [int(11)]
+ * @property int    $updated_at           [int(11)]
+ * @property string $about
+ * @property int    $type                 [int(3)]
+ * @property string $picture              [varchar(255)]
+ * @property string $nickname             [varchar(70)]
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -62,7 +67,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Find user by email.
+     * Find user by the provided email.
      *
      * @param string $email
      *
@@ -74,7 +79,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Find user by password reset token.
+     * Find user by the provided password reset token.
      *
      * @param string $token password reset token
      *
@@ -95,7 +100,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Find out if password reset token is valid.
+     * Find out if the provided password reset token is valid.
      *
      * @param string $token password reset token
      *
@@ -111,6 +116,16 @@ class User extends ActiveRecord implements IdentityInterface
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
 
         return $timestamp + $expire >= \time();
+    }
+
+    /**
+     * Get this users nickname, or id.
+     *
+     * @return string
+     */
+    public function getNickname(): string
+    {
+        return $this->nickname ?: (string) $this->getId();
     }
 
     /**
@@ -171,7 +186,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Generate password hash from password and sets it to the model.
+     * Generate password hash from password for this user.
      *
      * @param string $password
      *
@@ -183,7 +198,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Generate "remember me" authentication key.
+     * Generate "remember me" authentication key for this user.
      *
      * @throws \yii\base\Exception
      */
@@ -193,7 +208,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Generate new password reset token.
+     * Generate new password reset token for this user.
      *
      * @throws \yii\base\Exception
      */
@@ -203,10 +218,147 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Remove password reset token.
+     * Remove password reset token on this user.
      */
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    /**
+     * Subscribe current user to given user.
+     *
+     * @param self $user
+     */
+    public function subscribeUser(self $user)
+    {
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+
+        $redis->sadd("user:{$this->getId()}:subscriptions", $user->getId());
+        $redis->sadd("user:{$user->getId()}:followers", $this->getId());
+    }
+
+    /**
+     * Unsubscribe current user from given user.
+     *
+     * @param self $user
+     */
+    public function unsubscribeUser(self $user)
+    {
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+
+        $redis->srem("user:{$this->getId()}:subscriptions", $user->getId());
+        $redis->srem("user:{$user->getId()}:followers", $this->getId());
+    }
+
+    /**
+     * Fetch all this users subscriptions.
+     *
+     * @return array
+     */
+    public function getSubscriptions(): array
+    {
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+        $key = "user:{$this->getId()}:subscriptions";
+        $ids = $redis->smembers($key);
+
+        return static::find()
+            ->select('id, username, nickname')
+            ->where(['id' => $ids])
+            ->orderBy('username')
+            ->asArray()
+            ->all();
+    }
+
+    /**
+     * Fetch all this users followers.
+     *
+     * @return array
+     */
+    public function getFollowers(): array
+    {
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+        $key = "user:{$this->getId()}:followers";
+        $ids = $redis->smembers($key);
+
+        return static::find()
+            ->select('id, username, nickname')
+            ->where(['id' => $ids])
+            ->orderBy('username')
+            ->asArray()
+            ->all();
+    }
+
+    /**
+     * Count this users followers.
+     *
+     * @return mixed
+     */
+    public function countFollowers()
+    {
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+
+        return $redis->scard("user:{$this->getId()}:followers");
+    }
+
+    /**
+     * Count this users subscriptions.
+     *
+     * @return mixed
+     */
+    public function countSubscriptions()
+    {
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+
+        return $redis->scard("user:{$this->getId()}:subscriptions");
+    }
+
+    /**
+     * Find the intersection of my subscriptions and given users followers.
+     *
+     * @param self $user
+     *
+     * @return array
+     */
+    public function mutualSubscriptions(self $user): array
+    {
+        $currentUserSubscriptions = "user:{$this->getId()}:subscriptions";
+        $givenUserFollowers = "user:{$user->getId()}:followers";
+
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+
+        $ids = $redis->sinter($currentUserSubscriptions, $givenUserFollowers);
+
+        return static::find()
+            ->select('id, username, nickname')
+            ->where(['id' => $ids])
+            ->orderBy('username')
+            ->asArray()
+            ->all();
+    }
+
+    /**
+     * Check if the user is subscribed to provided user.
+     *
+     * @param self $user
+     *
+     * @return bool
+     */
+    public function isSubscribedTo(self $user): bool
+    {
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+
+        return (bool) $redis->sismember(
+            "user:{$this->getId()}:subscriptions",
+            $user->getId()
+        );
     }
 }

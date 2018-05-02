@@ -3,17 +3,20 @@
 declare(strict_types=1);
 
 /* @var $this \yii\web\View */
-
+/* @var User $currentUser */
 /* @var $content string */
 
 use app\assets\AppAsset;
+use app\models\User;
 use app\widgets\Alert;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 
 AppAsset::register($this);
+$currentUser = Yii::$app->user->identity;
 ?>
 <?php $this->beginPage(); ?>
     <!DOCTYPE html>
@@ -36,11 +39,12 @@ AppAsset::register($this);
         ];
 
         if (Yii::$app->user->isGuest) {
-            $menuItems[] = ['label' => 'Signup', 'url' => ['/user/signup']];
-            $menuItems[] = ['label' => 'Login', 'url' => ['/user/login']];
+            $menuItems[] = ['label' => 'Signup', 'url' => ['/user/default/signup']];
+            $menuItems[] = ['label' => 'Login', 'url' => ['/user/default/login']];
         } else {
-            $menuItems[] = '<li>'.Html::beginForm(['/user/logout']).Html::submitButton(
-                'Logout ('.Yii::$app->user->identity->username.')',
+            $menuItems[] = ['label' => 'Profile', 'url' => [Url::to(['/user/profile/update/', 'id' => $currentUser->id])]];
+            $menuItems[] = '<li>'.Html::beginForm(['/user/default/logout']).Html::submitButton(
+                'Logout ('.$currentUser->username.')',
                 ['class' => 'btn btn-link logout']
             ).Html::endForm().'</li>';
         }
