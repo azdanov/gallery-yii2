@@ -6,9 +6,10 @@ use app\components\Storage;
 use app\models\User;
 use yii\authclient\clients\GitHub;
 use yii\authclient\Collection;
-use yii\caching\FileCache;
 use yii\log\FileTarget;
+use yii\redis\Cache;
 use yii\redis\Connection;
+use yii\redis\Session;
 use yii\swiftmailer\Mailer;
 use yii\web\UrlNormalizer;
 
@@ -35,9 +36,6 @@ $config = [
     'components' => [
         'request' => [
             'cookieValidationKey' => \getenv('COOKIE_VALIDATION'),
-        ],
-        'cache' => [
-            'class' => FileCache::class,
         ],
         'user' => [
             'identityClass' => User::class,
@@ -68,6 +66,12 @@ $config = [
             ],
         ],
         'db' => $db,
+        'cache' => [
+            'class' => Cache::class,
+        ],
+        'session' => [
+            'class' => Session::class,
+        ],
         'redis' => [
             'class' => Connection::class,
             'hostname' => \getenv('CACHE_HOSTNAME'),
