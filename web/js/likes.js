@@ -1,9 +1,6 @@
 $(function() {
-  var $buttonLike = $('#buttonLike');
-  var $buttonUnlike = $('#buttonUnlike');
-  var $likesCount = $('#likesCount');
-
-  $buttonLike.click(function() {
+  $('.btn-like').click(function() {
+    var button = $(this);
     $.post(
       '/post/default/like',
       {
@@ -11,15 +8,19 @@ $(function() {
       },
       function(data) {
         if (data.success) {
-          $buttonLike.addClass('hidden');
-          $buttonUnlike.removeClass('hidden');
-          $likesCount.text(data.likesCount);
+          button.addClass('hidden');
+          button.siblings('.btn-unlike').removeClass('hidden');
+          button
+            .siblings('span')
+            .children('.likes-count')
+            .text(data.likesCount);
         }
       }
     );
   });
 
-  $buttonUnlike.click(function() {
+  $('.btn-unlike').click(function() {
+    var button = $(this);
     $.post(
       '/post/default/unlike',
       {
@@ -27,9 +28,12 @@ $(function() {
       },
       function(data) {
         if (data.success) {
-          $buttonUnlike.addClass('hidden');
-          $buttonLike.removeClass('hidden');
-          $likesCount.text(data.likesCount);
+          button.addClass('hidden');
+          button.siblings('.btn-like').removeClass('hidden');
+          button
+            .siblings('span')
+            .children('.likes-count')
+            .text(data.likesCount);
         }
       }
     );

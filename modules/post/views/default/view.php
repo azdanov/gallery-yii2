@@ -26,16 +26,16 @@ $isLikedByCurrentUser = $currentUser && $post->isLikedBy($currentUser);
 
         <div class="col-md-12">
             <?php if ($post->user) : ?>
-                <?php echo $post->user->username; ?>
+                <?= $post->user->username; ?>
             <?php endif; ?>
         </div>
 
         <div class="col-md-12">
-            <img src="<?php echo $post->getImage(); ?>" />
+            <img src="<?= $post->getImage(); ?>" />
         </div>
 
         <div class="col-md-12">
-            <?php echo Html::encode($post->description); ?>
+            <?= Html::encode($post->description); ?>
         </div>
 
     </div>
@@ -43,20 +43,16 @@ $isLikedByCurrentUser = $currentUser && $post->isLikedBy($currentUser);
     <hr>
 
     <div class="col-md-12">
-        <span>Likes: <span id="likesCount"><?php echo $post->countLikes(); ?></span></span>
+        <span>Likes: <span class="likes-count"><?= $post->countLikes(); ?></span></span>
 
-        <a href="#"
-           id="buttonUnlike"
-           class="btn btn-primary <?php echo $isLikedByCurrentUser ? '' : 'hidden'; ?>"
-           data-id="<?php echo $post->id; ?>">
+        <button class="btn btn-primary btn-unlike <?= $isLikedByCurrentUser ? '' : 'hidden'; ?>"
+           data-id="<?= $post->id; ?>">
             Unlike&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-down"></span>
-        </a>
-        <a href="#"
-           id="buttonLike"
-           class="btn btn-primary <?php echo $isLikedByCurrentUser ? 'hidden' : ''; ?>"
-           data-id="<?php echo $post->id; ?>">
+        </button>
+        <button class="btn btn-primary btn-like <?= $isLikedByCurrentUser ? 'hidden' : ''; ?>"
+           data-id="<?= $post->id; ?>">
             Like&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span>
-        </a>
+        </button>
 
     </div>
 

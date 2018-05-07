@@ -6,6 +6,7 @@ namespace app\modules\user\components;
 
 use app\models\User;
 use app\modules\user\models\Auth;
+use Kint;
 use Yii;
 use yii\authclient\ClientInterface;
 use yii\helpers\ArrayHelper;

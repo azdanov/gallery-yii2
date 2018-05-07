@@ -146,26 +146,6 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Get users profile picture.
-     * Return a default picture if not found.
-     *
-     * @throws \yii\base\InvalidConfigException
-     *
-     * @return string
-     */
-    public function getPicture(): string
-    {
-        if ($this->picture) {
-            /** @var StorageInterface $storage */
-            $storage = Yii::$app->get('storage');
-
-            return $storage->getFile($this->picture);
-        }
-
-        return Yii::$app->params['defaultPicture'];
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function validateAuthKey($authKey): bool
@@ -190,6 +170,26 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findIdentityByAccessToken($token, $type = null)
     {
         throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
+    }
+
+    /**
+     * Get users profile picture.
+     * Return a default picture if not found.
+     *
+     * @throws \yii\base\InvalidConfigException
+     *
+     * @return string
+     */
+    public function getPicture(): string
+    {
+        if ($this->picture) {
+            /** @var StorageInterface $storage */
+            $storage = Yii::$app->get('storage');
+
+            return $storage->getFile($this->picture);
+        }
+
+        return Yii::$app->params['defaultPicture'];
     }
 
     /**
@@ -381,5 +381,38 @@ class User extends ActiveRecord implements IdentityInterface
             "user:{$this->getId()}:subscriptions",
             $user->getId()
         );
+    }
+
+    /**
+     * Get data for feed.
+     *
+     * @param int $limit
+     *
+     * @return ActiveRecord[]|array|User[]
+     */
+    public function getFeed(int $limit): array
+    {
+        $order = ['post_created_at' => SORT_DESC];
+
+        return $this
+            ->hasMany(Feed::class, ['user_id' => 'id'])
+            ->orderBy($order)
+            ->limit($limit)
+            ->all();
+    }
+
+    /**
+     * Check whether current user likes post with given id.
+     *
+     * @param int $postId
+     *
+     * @return bool
+     */
+    public function likesPost(int $postId): bool
+    {
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+
+        return (bool) $redis->sismember("user:{$this->getId()}:likes", $postId);
     }
 }

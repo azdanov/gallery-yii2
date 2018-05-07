@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $title;
             <?php $form = ActiveForm::begin(['id' => 'reset-password-form']); ?>
 
             <?= $form->field($model, 'password')
-                ->passwordInput(['autofocus' => true, 'placeholder' => 'Email']); ?>
+                ->passwordInput(['autofocus' => true, 'placeholder' => 'Password']); ?>
 
             <div class="form-group">
                 <?= Html::submitButton('Save', ['class' => 'btn btn-primary']); ?>

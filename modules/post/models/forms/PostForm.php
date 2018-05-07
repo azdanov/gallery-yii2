@@ -9,6 +9,7 @@ namespace app\modules\post\models\forms;
 // phpcs:disable Zend.NamingConventions.ValidVariableName.NotCamelCaps
 
 use app\components\StorageInterface;
+use app\models\events\PostCreatedEvent;
 use app\models\Post;
 use app\models\User;
 use Intervention\Image\Constraint;
@@ -40,6 +41,7 @@ class PostForm extends Model
 
         $this->user = $user;
         $this->on(self::EVENT_AFTER_VALIDATE, [$this, 'resizePicture']);
+        $this->on(self::EVENT_POST_CREATED, [Yii::$app->feedService, 'addToFeeds']);
     }
 
     /**
@@ -61,16 +63,6 @@ class PostForm extends Model
     }
 
     /**
-     * Maximum size for an uploaded file.
-     *
-     * @return int
-     */
-    private function getMaxFileSize(): int
-    {
-        return Yii::$app->params['maxFileSize'];
-    }
-
-    /**
      * @return bool
      */
     public function save(): bool
@@ -87,7 +79,16 @@ class PostForm extends Model
         $post->filename = $storage->saveUploadedFile($this->picture);
         $post->user_id = $this->user->getId();
 
-        return $post->save(false);
+        $isSaved = $post->save(false);
+
+        if ($isSaved) {
+            $event = new PostCreatedEvent();
+            $event->setUser($this->user);
+            $event->setPost($post);
+            $this->trigger(self::EVENT_POST_CREATED, $event);
+        }
+
+        return $isSaved;
     }
 
     /**
@@ -111,5 +112,15 @@ class PostForm extends Model
                 }
             )->save(null, 75)
             ->destroy();
+    }
+
+    /**
+     * Maximum size for an uploaded file.
+     *
+     * @return int
+     */
+    private function getMaxFileSize(): int
+    {
+        return Yii::$app->params['maxFileSize'];
     }
 }

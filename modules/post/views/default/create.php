@@ -17,11 +17,11 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?php echo $form->field($postForm, 'picture')->fileInput(); ?>
+    <?= $form->field($postForm, 'picture')->fileInput(); ?>
 
-    <?php echo $form->field($postForm, 'description'); ?>
+    <?= $form->field($postForm, 'description'); ?>
 
-    <?php echo Html::submitButton('Create'); ?>
+    <?= Html::submitButton('Create'); ?>
 
     <?php ActiveForm::end(); ?>
 

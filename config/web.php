@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use app\components\Storage;
+use app\components\FeedService;
 use app\models\User;
 use yii\authclient\clients\GitHub;
 use yii\authclient\Collection;
@@ -107,6 +108,9 @@ $config = [
                     'clientSecret' => \getenv('CLIENT_SECRET'),
                 ],
             ],
+        ],
+        'feedService' => [
+            'class' => FeedService::class,
         ],
     ],
     'params' => $params,
