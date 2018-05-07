@@ -32,6 +32,9 @@ $config = [
         'user' => [
             'class' => app\modules\user\Module::class,
         ],
+        'post' => [
+            'class' => app\modules\post\Module::class,
+        ],
     ],
     'components' => [
         'request' => [
@@ -92,6 +95,7 @@ $config = [
             'rules' => [
                 '' => 'site/index',
                 'profile/<identifier:\w+>' => 'user/profile/view',
+                'post/<id:\d+>' => 'post/default/view',
             ],
         ],
         'authClientCollection' => [

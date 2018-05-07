@@ -90,7 +90,7 @@ class Storage extends Component implements StorageInterface
      */
     protected function preparePath(UploadedFile $file): ?string
     {
-        $this->fileName = $this->getFileName($file);
+        $this->fileName = $this->getFilename($file);
 
         $path = $this->getStoragePath().$this->fileName;
 
@@ -113,7 +113,7 @@ class Storage extends Component implements StorageInterface
      *
      * @return string
      */
-    protected function getFileName(UploadedFile $file): string
+    protected function getFilename(UploadedFile $file): string
     {
         $hash = \sha1_file($file->tempName);
 
