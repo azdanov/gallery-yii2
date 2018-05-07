@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace app\components;
 
+use Intervention\Image\Constraint;
 use Intervention\Image\ImageManager;
 use Yii;
 use yii\base\Component;
@@ -40,11 +41,14 @@ class Storage extends Component implements StorageInterface
 
         $manager
             ->make($file->tempName)
-            ->resize($width, $height, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            })
-            ->save($path, 75)
+            ->resize(
+                $width,
+                $height,
+                function (Constraint $constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                }
+            )->save($path, 75)
             ->destroy();
 
         return $this->fileName;

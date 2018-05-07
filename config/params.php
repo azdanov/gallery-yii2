@@ -13,7 +13,11 @@ return [
     'storageUri' => '/uploads/',
     'defaultPicture' => '/img/profile_default_image.png',
     'profilePictureSize' => [
+        'width' => 512,
+        'height' => 512,
+    ],
+    'postPictureSize' => [
         'width' => 1024,
-        'height' => 1024,
+        'height' => 768,
     ],
 ];

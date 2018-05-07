@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpMissingParentCallCommonInspection */
+<?php
+
+/** @noinspection PhpMissingParentCallCommonInspection */
 
 declare(strict_types=1);
 
@@ -9,15 +11,20 @@ namespace app\modules\post\models\forms;
 use app\components\StorageInterface;
 use app\models\Post;
 use app\models\User;
+use Intervention\Image\Constraint;
+use Intervention\Image\ImageManager;
 use Yii;
 use yii\base\Model;
 
 /**
  * Class PostForm.
+ *
+ * @property int $maxFileSize
  */
 class PostForm extends Model
 {
     public const MAX_DESCRIPTION_LENGTH = 1000;
+    public const EVENT_POST_CREATED = 'POST_CREATED';
 
     public $picture;
     public $description;
@@ -32,6 +39,7 @@ class PostForm extends Model
         parent::__construct();
 
         $this->user = $user;
+        $this->on(self::EVENT_AFTER_VALIDATE, [$this, 'resizePicture']);
     }
 
     /**
@@ -50,6 +58,16 @@ class PostForm extends Model
             ],
             [['description'], 'string', 'max' => self::MAX_DESCRIPTION_LENGTH],
         ];
+    }
+
+    /**
+     * Maximum size for an uploaded file.
+     *
+     * @return int
+     */
+    private function getMaxFileSize(): int
+    {
+        return Yii::$app->params['maxFileSize'];
     }
 
     /**
@@ -73,12 +91,25 @@ class PostForm extends Model
     }
 
     /**
-     * Maximum size of the uploaded file.
-     *
-     * @return int
+     * Resize image when necessary.
      */
-    private function getMaxFileSize(): int
+    public function resizePicture(): void
     {
-        return Yii::$app->params['maxFileSize'];
+        $width = Yii::$app->params['postPictureSize']['width'];
+        $height = Yii::$app->params['postPictureSize']['height'];
+
+        $manager = new ImageManager(['driver' => 'imagick']);
+
+        $manager
+            ->make($this->picture->tempName)
+            ->resize(
+                $width,
+                $height,
+                function (Constraint $constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                }
+            )->save(null, 75)
+            ->destroy();
     }
 }
