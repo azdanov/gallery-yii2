@@ -1,5 +1,5 @@
 $(function() {
-  $('.btn-like').click(function() {
+  $('.button-like').click(function() {
     var button = $(this);
     $.post(
       '/post/default/like',
@@ -9,17 +9,15 @@ $(function() {
       function(data) {
         if (data.success) {
           button.addClass('hidden');
-          button.siblings('.btn-unlike').removeClass('hidden');
-          button
-            .siblings('span')
-            .children('.likes-count')
-            .text(data.likesCount);
+          button.siblings('.button-unlike').removeClass('hidden');
+          button.siblings('.likes-count').text(data.likesCount);
         }
       }
     );
+    return false;
   });
 
-  $('.btn-unlike').click(function() {
+  $('.button-unlike').click(function() {
     var button = $(this);
     $.post(
       '/post/default/unlike',
@@ -29,13 +27,11 @@ $(function() {
       function(data) {
         if (data.success) {
           button.addClass('hidden');
-          button.siblings('.btn-like').removeClass('hidden');
-          button
-            .siblings('span')
-            .children('.likes-count')
-            .text(data.likesCount);
+          button.siblings('.button-like').removeClass('hidden');
+          button.siblings('.likes-count').text(data.likesCount);
         }
       }
     );
+    return false;
   });
 });

@@ -125,7 +125,7 @@ class Post extends \yii\db\ActiveRecord
      *
      * @return int
      */
-    private function getId(): int
+    public function getId(): int
     {
         return $this->id;
     }

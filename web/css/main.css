@@ -1,0 +1,545 @@
+@charset "utf-8";
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #111;
+  font-family: "Arial", serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Arial", serif;
+}
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+header,
+section,
+article,
+aside,
+canvas {
+  position: relative;
+}
+
+header .header-top {
+  padding: 5px 0;
+  position: relative;
+}
+
+header .header-top .navicons-topbar ul {
+  float: right;
+}
+
+header .header-top ul {
+  display: inline-block;
+  margin: 40px 0 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+header .header-top ul li {
+  display: inline-block;
+  padding: 0 7px;
+}
+
+header .header-top ul li a {
+  display: inline-block;
+  font-size: 18px;
+}
+
+header .header-top ul li a.search-toggle {
+  position: relative;
+  z-index: 1;
+}
+
+header .header-top ul li.blog-search .dropdown {
+  cursor: pointer;
+  width: auto;
+}
+
+header .header-top .brand-logo {
+  display: inline-block;
+  text-align: center;
+}
+
+header .header-top .brand-logo h1 {
+  display: inline-block;
+  margin: 0;
+}
+
+header .header-top .brand-logo h1 a,
+header .header-top .brand-logo h1 a img {
+  display: inline-block;
+}
+
+header .header-top .brand-logo h1 a,
+header .header-top .brand-logo h1 a img:hover {
+  transform: none;
+}
+
+header .header-top .brand-logo h1 span {
+  color: #aeaeae;
+  display: inline-block;
+  float: left;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 13px;
+  margin: 5px 0 0 0;
+  width: 100%;
+}
+
+.header-main-nav {
+  border-bottom: 1px solid;
+  height: 60px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.header-main-nav .main-nav-wrapper {
+  border-top: 1px solid;
+  position: relative;
+  text-align: center;
+}
+
+.header-main-nav .main-nav-wrapper .main-menu {
+  display: inline-block;
+  text-align: center;
+}
+
+.header-main-nav .main-nav-wrapper .main-menu ul {
+  display: inline-block;
+  margin: -1px 0 0;
+  padding: 0;
+}
+
+.header-main-nav .main-nav-wrapper .main-menu ul li {
+  display: inline-block;
+}
+
+.header-main-nav .main-nav-wrapper .main-menu ul li.active {
+  background-color: #eee;
+}
+
+.header-main-nav .main-nav-wrapper .main-menu ul li a {
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 20px 22px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.blog-main {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+
+.blog-posts {
+  margin: 15px 0;
+  padding-left: 0;
+  position: relative;
+}
+
+.page-posts {
+  margin: 50px 0;
+  padding-left: 0;
+  position: relative;
+}
+
+.page-posts.no-padding {
+  margin: 0;
+}
+
+.blog-posts {
+  padding-left: inherit;
+}
+
+.blog-posts .post .post-title {
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.post {
+  margin: 0 0 50px 0;
+}
+
+.blog-posts .post .author-name {
+  display: inline-block;
+  font-size: 21px;
+  font-weight: normal;
+  line-height: 48px;
+  margin: 10px 0;
+}
+
+.blog-posts .post .author-image {
+  border-radius: 25px;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  display: inline-block;
+  height: 50px;
+  margin: -5px 10px 0 0;
+  width: 50px;
+}
+
+.blog-posts .post .post-bottom {
+  border-bottom: 1px solid #ececec;
+  position: relative;
+}
+
+.likes-count {
+  margin-right: 10px;
+}
+
+.blog-posts .post .post-likes,
+.blog-posts .post .post-bottom .post-likes a,
+.post .post-description,
+.post-report {
+  display: inline;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.blog-posts .post .post-bottom .post-likes button.display-none {
+  display: none;
+}
+
+.blog-posts .post .post-bottom .post-comments,
+.post-report {
+  border-left: 1px solid #ececec;
+  border-right: 1px solid #ececec;
+  display: inline-block;
+  margin: 0 10px;
+  padding: 0 15px 10px;
+  position: relative;
+}
+
+.blog-posts .post .post-bottom .post-date {
+  display: inline-block;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 13px;
+  position: relative;
+}
+
+.post-report {
+  border-left: 1px solid #ececec;
+  border-right: 0;
+  display: inline-block;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 13px;
+  position: relative;
+}
+
+.blog-posts .post .post-bottom .post-author a {
+  display: inline-block;
+  margin: 0 0 0 3px;
+  text-decoration: none;
+}
+
+body.page .page-post .post-description p {
+  font-size: 14px;
+  margin-bottom: 0;
+  padding: 15px 0 15px 0;
+}
+
+.footer {
+  background-color: #202020;
+  display: inline-block;
+  height: 80px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.footer .back-to-top-page {
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: -32px;
+}
+
+.footer .back-to-top-page a {
+  background-color: #202020;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-topright: 3px;
+  border-top-left-radius: 3px;
+  -webkit-border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  color: #aeaeae;
+  cursor: pointer;
+  display: inline-block;
+  height: 32px;
+  line-height: 34px;
+  width: 32px;
+}
+
+.footer p.text {
+  color: #606060;
+  display: inline-block;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 13px;
+  margin: 0;
+  padding: 30px 0;
+}
+
+.sidebar-navigation-menu,
+header .header-top ul li a {
+  color: #aeaeae;
+}
+
+.header-main-nav {
+  border-color: #ececec;
+}
+
+.header-main-nav .main-nav-wrapper {
+  border-color: #ececec;
+}
+
+.header-main-nav .main-nav-wrapper .main-menu ul li > a {
+  color: #000;
+}
+
+.post .post-bottom .post-comments a {
+  color: #aeaeae;
+}
+
+.post .author-name a {
+  color: #888;
+}
+
+.main .blog-posts .comments-post {
+  border: 1px solid #ececec;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  display: inline-block;
+  margin: 0 0 30px;
+  padding: 0 15px;
+  width: 100%;
+}
+
+.comment {
+  padding-top: 20px;
+}
+
+.comments-post ul.comment-list {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+.comments-post ul.comment-list li {
+  display: inline-block;
+  padding: 30px 0;
+  position: relative;
+  width: 100%;
+}
+
+.comments-post ul.comment-list ul li {
+  padding: 30px 25px;
+}
+
+.comments-post ul.comment-list li ~ li {
+  border-top: 1px solid #ececec;
+}
+
+.comments-post ul.comment-list li .comment-user-image {
+  display: inline-block;
+  left: 25px;
+  overflow: hidden;
+  position: absolute;
+}
+
+.comments-post ul.comment-list li .comment-info {
+  display: block;
+  margin: 0 0 0 90px;
+}
+
+.comments-post ul.comment-list li .comment-info {
+  display: inline-block;
+  padding: 0 25px;
+  text-align: left;
+  width: 100%;
+}
+
+.comments-post ul.comment-list ul.children .comment-info {
+  display: inline-block;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+}
+
+.comments-post ul.comment-list li .comment-info h4.author {
+  color: #000;
+  display: inline-block;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  width: 100%;
+}
+
+.comments-post ul.comment-list li .comment-info h4.author a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.comments-post ul.comment-list li .comment-info p {
+  color: #606060;
+  display: inline-block;
+  font-size: 13px;
+  line-height: 22px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.comments-post ul.comment-list li .comment-info h4.author a {
+  color: #000;
+}
+
+.comments-post ul.comment-list li .comment-info h4.author a:hover {
+  color: #c16fb6;
+}
+
+/** profile **/
+.profile {
+  margin-bottom: 35px;
+}
+
+.profile .profile-bottom {
+  border-bottom: 1px solid #ececec;
+  position: relative;
+}
+
+.profile .profile-post-count,
+.profile .profile-followers,
+.profile .profile-following {
+  display: inline-block;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.profile .profile-followers {
+  border-left: 1px solid #ececec;
+  border-right: 1px solid #ececec;
+  display: inline-block;
+  margin: 0 10px;
+  padding: 0 15px 10px;
+  position: relative;
+}
+
+.profile .profile-date {
+  display: inline-block;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 13px;
+  position: relative;
+}
+
+.profile .profile-description p {
+  font-size: 14px;
+  margin-bottom: 0;
+  padding: 25px 0;
+}
+
+.profile .author-name {
+  display: inline-block;
+  font-size: 21px;
+  font-weight: normal;
+  line-height: 48px;
+  margin: 10px 0;
+}
+
+.profile .author-image {
+  object-fit: cover;
+  border-radius:50%;
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+}
+
+.profile-post .author-image {
+  margin: 0 auto;
+}
+
+.profile .author-name {
+  margin-right: 20px;
+}
+
+.profile .profile-title a.btn {
+  margin-left: 10px;
+}
+
+.btn-default {
+  border: 0;
+}
+
+.profile-post {
+  margin-bottom: 25px;
+}
+
+/** profile **/
+
+.header-main-nav .main-nav-wrapper .main-menu ul li,
+.nav li > form > button.logout {
+  color: #000;
+  display: inline-block;
+}
+
+.nav li:hover {
+  background-color: #eee;
+}
+
+.nav li > form > button.logout {
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 21px 22px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.wrapper {
+  margin: 0 auto -80px;
+  min-height: 100%;
+}
+
+.wrapper:after {
+  content: "";
+  display: block;
+}
+
+.footer,
+.wrapper:after {
+  height: 80px;
+}

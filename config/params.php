@@ -11,7 +11,7 @@ return [
     'maxFileSize' => 2097152, // 2 MiB
     'storagePath' => '@app/web/uploads/',
     'storageUri' => '/uploads/',
-    'defaultPicture' => '/img/profile_default_image.png',
+    'defaultPicture' => '/img/profile_default_image.jpg',
     'profilePictureSize' => [
         'width' => 512,
         'height' => 512,

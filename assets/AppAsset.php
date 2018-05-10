@@ -1,21 +1,15 @@
 <?php
 
 declare(strict_types=1);
-/**
- * @see       http://www.yiiframework.com/
- *
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license   http://www.yiiframework.com/license/
- */
 
 namespace app\assets;
 
+use yii\bootstrap\BootstrapPluginAsset;
 use yii\web\AssetBundle;
+use yii\web\YiiAsset;
 
 /**
- * Main application asset bundle.
- *
- * @since 2.0
+ * Main frontend application asset bundle.
  */
 class AppAsset extends AssetBundle
 {
@@ -23,11 +17,13 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'css/main.css',
     ];
     public $js = [
+        'js/scripts.js',
     ];
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        YiiAsset::class,
+        BootstrapPluginAsset::class,
     ];
 }
