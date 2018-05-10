@@ -20437,3 +20437,839 @@ $_SERVER = [
     'CACHE_HOSTNAME' => 'cache'
     'CACHE_PORT' => '6379'
 ]
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "uploads/8f/f5/fcca42aef186118b2ff3995e6a0bf0fd4c16.jpg". in /app/vendor/yiisoft/yii2/base/Module.php:537
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('uploads/8f/f5/f...', Array)
+#1 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /app/web/index.php(14): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /app/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /app/web/index.php(14): yii\base\Application->run()
+#2 {main}
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'f6882ab6adcc9fd2a5c1366c71403f54'
+    '_identity' => '8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a:2:{i:0;s:9:\"_identity\";i:1;s:49:\"[1024,\"ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3\",2592000]\";}'
+    '_csrf' => 'bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"1IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1024
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost:8000'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'
+    'HTTP_ACCEPT' => 'image/webp,image/apng,image/*,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost:8000/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en,ru;q=0.9'
+    'HTTP_COOKIE' => 'PHPSESSID=f6882ab6adcc9fd2a5c1366c71403f54; _identity=8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A49%3A%22%5B1024%2C%22ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3%22%2C2592000%5D%22%3B%7D; _csrf=bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%221IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl%22%3B%7D'
+    'PATH' => '/app:/app/vendor/bin:/root/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.25 (Debian) Server at localhost Port 8000</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.25 (Debian)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '172.18.0.4'
+    'SERVER_PORT' => '8000'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/index.php'
+    'REMOTE_PORT' => '42512'
+    'REDIRECT_URL' => '/uploads/8f/f5/fcca42aef186118b2ff3995e6a0bf0fd4c16.jpg'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/uploads/8f/f5/fcca42aef186118b2ff3995e6a0bf0fd4c16.jpg'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1525972135.147
+    'REQUEST_TIME' => 1525972135
+    'argv' => []
+    'argc' => 0
+    'CLIENT_ID' => '85b5223a698c76af08e7'
+    'CLIENT_SECRET' => '23d04815f1df9dfd0d2d7e4406e8d3141626dff7'
+    'COOKIE_VALIDATION' => '6mPx35nXiLfpZwqLnK*khALHV6x4tsoq'
+    'DB_HOST' => 'mysql:host=db'
+    'DB_NAME' => 'yii2gallery'
+    'DB_USERNAME' => 'root'
+    'DB_PASSWORD' => 'secret'
+    'CACHE_HOSTNAME' => 'cache'
+    'CACHE_PORT' => '6379'
+]
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "uploads/a4/d4/d8aa4632e86405b7d88cecd21db00639d38c.jpg". in /app/vendor/yiisoft/yii2/base/Module.php:537
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('uploads/a4/d4/d...', Array)
+#1 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /app/web/index.php(14): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /app/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /app/web/index.php(14): yii\base\Application->run()
+#2 {main}
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'f6882ab6adcc9fd2a5c1366c71403f54'
+    '_identity' => '8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a:2:{i:0;s:9:\"_identity\";i:1;s:49:\"[1024,\"ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3\",2592000]\";}'
+    '_csrf' => 'bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"1IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1024
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost:8000'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'
+    'HTTP_ACCEPT' => 'image/webp,image/apng,image/*,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost:8000/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en,ru;q=0.9'
+    'HTTP_COOKIE' => 'PHPSESSID=f6882ab6adcc9fd2a5c1366c71403f54; _identity=8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A49%3A%22%5B1024%2C%22ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3%22%2C2592000%5D%22%3B%7D; _csrf=bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%221IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl%22%3B%7D'
+    'PATH' => '/app:/app/vendor/bin:/root/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.25 (Debian) Server at localhost Port 8000</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.25 (Debian)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '172.18.0.4'
+    'SERVER_PORT' => '8000'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/index.php'
+    'REMOTE_PORT' => '42504'
+    'REDIRECT_URL' => '/uploads/a4/d4/d8aa4632e86405b7d88cecd21db00639d38c.jpg'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/uploads/a4/d4/d8aa4632e86405b7d88cecd21db00639d38c.jpg'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1525972135.144
+    'REQUEST_TIME' => 1525972135
+    'argv' => []
+    'argc' => 0
+    'CLIENT_ID' => '85b5223a698c76af08e7'
+    'CLIENT_SECRET' => '23d04815f1df9dfd0d2d7e4406e8d3141626dff7'
+    'COOKIE_VALIDATION' => '6mPx35nXiLfpZwqLnK*khALHV6x4tsoq'
+    'DB_HOST' => 'mysql:host=db'
+    'DB_NAME' => 'yii2gallery'
+    'DB_USERNAME' => 'root'
+    'DB_PASSWORD' => 'secret'
+    'CACHE_HOSTNAME' => 'cache'
+    'CACHE_PORT' => '6379'
+]
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "uploads/91/14/abf9f7044cdad161640a178603fd601be6e1.jpg". in /app/vendor/yiisoft/yii2/base/Module.php:537
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('uploads/91/14/a...', Array)
+#1 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /app/web/index.php(14): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /app/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /app/web/index.php(14): yii\base\Application->run()
+#2 {main}
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'f6882ab6adcc9fd2a5c1366c71403f54'
+    '_identity' => '8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a:2:{i:0;s:9:\"_identity\";i:1;s:49:\"[1024,\"ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3\",2592000]\";}'
+    '_csrf' => 'bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"1IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1024
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost:8000'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'
+    'HTTP_ACCEPT' => 'image/webp,image/apng,image/*,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost:8000/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en,ru;q=0.9'
+    'HTTP_COOKIE' => 'PHPSESSID=f6882ab6adcc9fd2a5c1366c71403f54; _identity=8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A49%3A%22%5B1024%2C%22ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3%22%2C2592000%5D%22%3B%7D; _csrf=bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%221IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl%22%3B%7D'
+    'PATH' => '/app:/app/vendor/bin:/root/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.25 (Debian) Server at localhost Port 8000</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.25 (Debian)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '172.18.0.4'
+    'SERVER_PORT' => '8000'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/index.php'
+    'REMOTE_PORT' => '42516'
+    'REDIRECT_URL' => '/uploads/91/14/abf9f7044cdad161640a178603fd601be6e1.jpg'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/uploads/91/14/abf9f7044cdad161640a178603fd601be6e1.jpg'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1525972135.168
+    'REQUEST_TIME' => 1525972135
+    'argv' => []
+    'argc' => 0
+    'CLIENT_ID' => '85b5223a698c76af08e7'
+    'CLIENT_SECRET' => '23d04815f1df9dfd0d2d7e4406e8d3141626dff7'
+    'COOKIE_VALIDATION' => '6mPx35nXiLfpZwqLnK*khALHV6x4tsoq'
+    'DB_HOST' => 'mysql:host=db'
+    'DB_NAME' => 'yii2gallery'
+    'DB_USERNAME' => 'root'
+    'DB_PASSWORD' => 'secret'
+    'CACHE_HOSTNAME' => 'cache'
+    'CACHE_PORT' => '6379'
+]
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "uploads/ea/ed/48445d4538ccd1e1977324e0ca75efea852a.jpg". in /app/vendor/yiisoft/yii2/base/Module.php:537
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('uploads/ea/ed/4...', Array)
+#1 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /app/web/index.php(14): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /app/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /app/web/index.php(14): yii\base\Application->run()
+#2 {main}
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'f6882ab6adcc9fd2a5c1366c71403f54'
+    '_identity' => '8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a:2:{i:0;s:9:\"_identity\";i:1;s:49:\"[1024,\"ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3\",2592000]\";}'
+    '_csrf' => 'bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"1IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1024
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost:8000'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'
+    'HTTP_ACCEPT' => 'image/webp,image/apng,image/*,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost:8000/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en,ru;q=0.9'
+    'HTTP_COOKIE' => 'PHPSESSID=f6882ab6adcc9fd2a5c1366c71403f54; _identity=8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A49%3A%22%5B1024%2C%22ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3%22%2C2592000%5D%22%3B%7D; _csrf=bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%221IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl%22%3B%7D'
+    'PATH' => '/app:/app/vendor/bin:/root/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.25 (Debian) Server at localhost Port 8000</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.25 (Debian)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '172.18.0.4'
+    'SERVER_PORT' => '8000'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/index.php'
+    'REMOTE_PORT' => '42514'
+    'REDIRECT_URL' => '/uploads/ea/ed/48445d4538ccd1e1977324e0ca75efea852a.jpg'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/uploads/ea/ed/48445d4538ccd1e1977324e0ca75efea852a.jpg'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1525972135.168
+    'REQUEST_TIME' => 1525972135
+    'argv' => []
+    'argc' => 0
+    'CLIENT_ID' => '85b5223a698c76af08e7'
+    'CLIENT_SECRET' => '23d04815f1df9dfd0d2d7e4406e8d3141626dff7'
+    'COOKIE_VALIDATION' => '6mPx35nXiLfpZwqLnK*khALHV6x4tsoq'
+    'DB_HOST' => 'mysql:host=db'
+    'DB_NAME' => 'yii2gallery'
+    'DB_USERNAME' => 'root'
+    'DB_PASSWORD' => 'secret'
+    'CACHE_HOSTNAME' => 'cache'
+    'CACHE_PORT' => '6379'
+]
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "uploads/56/8a/608a00eec63bf114c4fcb5fd6d81f44663eb.jpg". in /app/vendor/yiisoft/yii2/base/Module.php:537
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('uploads/56/8a/6...', Array)
+#1 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /app/web/index.php(14): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /app/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /app/web/index.php(14): yii\base\Application->run()
+#2 {main}
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'f6882ab6adcc9fd2a5c1366c71403f54'
+    '_identity' => '8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a:2:{i:0;s:9:\"_identity\";i:1;s:49:\"[1024,\"ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3\",2592000]\";}'
+    '_csrf' => 'bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"1IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1024
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost:8000'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'
+    'HTTP_ACCEPT' => 'image/webp,image/apng,image/*,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost:8000/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en,ru;q=0.9'
+    'HTTP_COOKIE' => 'PHPSESSID=f6882ab6adcc9fd2a5c1366c71403f54; _identity=8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A49%3A%22%5B1024%2C%22ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3%22%2C2592000%5D%22%3B%7D; _csrf=bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%221IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl%22%3B%7D'
+    'PATH' => '/app:/app/vendor/bin:/root/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.25 (Debian) Server at localhost Port 8000</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.25 (Debian)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '172.18.0.4'
+    'SERVER_PORT' => '8000'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/index.php'
+    'REMOTE_PORT' => '42518'
+    'REDIRECT_URL' => '/uploads/56/8a/608a00eec63bf114c4fcb5fd6d81f44663eb.jpg'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/uploads/56/8a/608a00eec63bf114c4fcb5fd6d81f44663eb.jpg'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1525972135.168
+    'REQUEST_TIME' => 1525972135
+    'argv' => []
+    'argc' => 0
+    'CLIENT_ID' => '85b5223a698c76af08e7'
+    'CLIENT_SECRET' => '23d04815f1df9dfd0d2d7e4406e8d3141626dff7'
+    'COOKIE_VALIDATION' => '6mPx35nXiLfpZwqLnK*khALHV6x4tsoq'
+    'DB_HOST' => 'mysql:host=db'
+    'DB_NAME' => 'yii2gallery'
+    'DB_USERNAME' => 'root'
+    'DB_PASSWORD' => 'secret'
+    'CACHE_HOSTNAME' => 'cache'
+    'CACHE_PORT' => '6379'
+]
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "uploads/0d/10/e9c010d4c4ff0211d13e0909622c17bfbe86.jpg". in /app/vendor/yiisoft/yii2/base/Module.php:537
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('uploads/0d/10/e...', Array)
+#1 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /app/web/index.php(14): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /app/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /app/web/index.php(14): yii\base\Application->run()
+#2 {main}
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'f6882ab6adcc9fd2a5c1366c71403f54'
+    '_identity' => '8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a:2:{i:0;s:9:\"_identity\";i:1;s:49:\"[1024,\"ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3\",2592000]\";}'
+    '_csrf' => 'bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"1IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1024
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost:8000'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'
+    'HTTP_ACCEPT' => 'image/webp,image/apng,image/*,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost:8000/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en,ru;q=0.9'
+    'HTTP_COOKIE' => 'PHPSESSID=f6882ab6adcc9fd2a5c1366c71403f54; _identity=8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A49%3A%22%5B1024%2C%22ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3%22%2C2592000%5D%22%3B%7D; _csrf=bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%221IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl%22%3B%7D'
+    'PATH' => '/app:/app/vendor/bin:/root/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.25 (Debian) Server at localhost Port 8000</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.25 (Debian)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '172.18.0.4'
+    'SERVER_PORT' => '8000'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/index.php'
+    'REMOTE_PORT' => '42548'
+    'REDIRECT_URL' => '/uploads/0d/10/e9c010d4c4ff0211d13e0909622c17bfbe86.jpg'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/uploads/0d/10/e9c010d4c4ff0211d13e0909622c17bfbe86.jpg'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1525972135.493
+    'REQUEST_TIME' => 1525972135
+    'argv' => []
+    'argc' => 0
+    'CLIENT_ID' => '85b5223a698c76af08e7'
+    'CLIENT_SECRET' => '23d04815f1df9dfd0d2d7e4406e8d3141626dff7'
+    'COOKIE_VALIDATION' => '6mPx35nXiLfpZwqLnK*khALHV6x4tsoq'
+    'DB_HOST' => 'mysql:host=db'
+    'DB_NAME' => 'yii2gallery'
+    'DB_USERNAME' => 'root'
+    'DB_PASSWORD' => 'secret'
+    'CACHE_HOSTNAME' => 'cache'
+    'CACHE_PORT' => '6379'
+]
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "uploads/49/55/bd21d1e6ec1d6a82d95d638b2021913d9f0a.jpg". in /app/vendor/yiisoft/yii2/base/Module.php:537
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('uploads/49/55/b...', Array)
+#1 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /app/web/index.php(14): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /app/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /app/web/index.php(14): yii\base\Application->run()
+#2 {main}
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'f6882ab6adcc9fd2a5c1366c71403f54'
+    '_identity' => '8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a:2:{i:0;s:9:\"_identity\";i:1;s:49:\"[1024,\"ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3\",2592000]\";}'
+    '_csrf' => 'bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"1IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1024
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost:8000'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'
+    'HTTP_ACCEPT' => 'image/webp,image/apng,image/*,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost:8000/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en,ru;q=0.9'
+    'HTTP_COOKIE' => 'PHPSESSID=f6882ab6adcc9fd2a5c1366c71403f54; _identity=8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A49%3A%22%5B1024%2C%22ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3%22%2C2592000%5D%22%3B%7D; _csrf=bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%221IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl%22%3B%7D'
+    'PATH' => '/app:/app/vendor/bin:/root/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.25 (Debian) Server at localhost Port 8000</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.25 (Debian)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '172.18.0.4'
+    'SERVER_PORT' => '8000'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/index.php'
+    'REMOTE_PORT' => '42550'
+    'REDIRECT_URL' => '/uploads/49/55/bd21d1e6ec1d6a82d95d638b2021913d9f0a.jpg'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/uploads/49/55/bd21d1e6ec1d6a82d95d638b2021913d9f0a.jpg'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1525972135.47
+    'REQUEST_TIME' => 1525972135
+    'argv' => []
+    'argc' => 0
+    'CLIENT_ID' => '85b5223a698c76af08e7'
+    'CLIENT_SECRET' => '23d04815f1df9dfd0d2d7e4406e8d3141626dff7'
+    'COOKIE_VALIDATION' => '6mPx35nXiLfpZwqLnK*khALHV6x4tsoq'
+    'DB_HOST' => 'mysql:host=db'
+    'DB_NAME' => 'yii2gallery'
+    'DB_USERNAME' => 'root'
+    'DB_PASSWORD' => 'secret'
+    'CACHE_HOSTNAME' => 'cache'
+    'CACHE_PORT' => '6379'
+]
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "uploads/f5/8d/f06e0ff41f7c38227cd8afaf86529d58d5c9.jpg". in /app/vendor/yiisoft/yii2/base/Module.php:537
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('uploads/f5/8d/f...', Array)
+#1 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /app/web/index.php(14): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /app/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /app/web/index.php(14): yii\base\Application->run()
+#2 {main}
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'f6882ab6adcc9fd2a5c1366c71403f54'
+    '_identity' => '8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a:2:{i:0;s:9:\"_identity\";i:1;s:49:\"[1024,\"ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3\",2592000]\";}'
+    '_csrf' => 'bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"1IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1024
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost:8000'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'
+    'HTTP_ACCEPT' => 'image/webp,image/apng,image/*,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost:8000/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en,ru;q=0.9'
+    'HTTP_COOKIE' => 'PHPSESSID=f6882ab6adcc9fd2a5c1366c71403f54; _identity=8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A49%3A%22%5B1024%2C%22ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3%22%2C2592000%5D%22%3B%7D; _csrf=bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%221IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl%22%3B%7D'
+    'PATH' => '/app:/app/vendor/bin:/root/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.25 (Debian) Server at localhost Port 8000</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.25 (Debian)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '172.18.0.4'
+    'SERVER_PORT' => '8000'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/index.php'
+    'REMOTE_PORT' => '42544'
+    'REDIRECT_URL' => '/uploads/f5/8d/f06e0ff41f7c38227cd8afaf86529d58d5c9.jpg'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/uploads/f5/8d/f06e0ff41f7c38227cd8afaf86529d58d5c9.jpg'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1525972135.432
+    'REQUEST_TIME' => 1525972135
+    'argv' => []
+    'argc' => 0
+    'CLIENT_ID' => '85b5223a698c76af08e7'
+    'CLIENT_SECRET' => '23d04815f1df9dfd0d2d7e4406e8d3141626dff7'
+    'COOKIE_VALIDATION' => '6mPx35nXiLfpZwqLnK*khALHV6x4tsoq'
+    'DB_HOST' => 'mysql:host=db'
+    'DB_NAME' => 'yii2gallery'
+    'DB_USERNAME' => 'root'
+    'DB_PASSWORD' => 'secret'
+    'CACHE_HOSTNAME' => 'cache'
+    'CACHE_PORT' => '6379'
+]
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "uploads/55/c9/ede8ae87d282c0b37671ca88b9feee32c12e.jpg". in /app/vendor/yiisoft/yii2/base/Module.php:537
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('uploads/55/c9/e...', Array)
+#1 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /app/web/index.php(14): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /app/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /app/web/index.php(14): yii\base\Application->run()
+#2 {main}
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'f6882ab6adcc9fd2a5c1366c71403f54'
+    '_identity' => '8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a:2:{i:0;s:9:\"_identity\";i:1;s:49:\"[1024,\"ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3\",2592000]\";}'
+    '_csrf' => 'bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"1IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1024
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost:8000'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'
+    'HTTP_ACCEPT' => 'image/webp,image/apng,image/*,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost:8000/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en,ru;q=0.9'
+    'HTTP_COOKIE' => 'PHPSESSID=f6882ab6adcc9fd2a5c1366c71403f54; _identity=8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A49%3A%22%5B1024%2C%22ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3%22%2C2592000%5D%22%3B%7D; _csrf=bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%221IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl%22%3B%7D'
+    'PATH' => '/app:/app/vendor/bin:/root/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.25 (Debian) Server at localhost Port 8000</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.25 (Debian)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '172.18.0.4'
+    'SERVER_PORT' => '8000'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/index.php'
+    'REMOTE_PORT' => '42552'
+    'REDIRECT_URL' => '/uploads/55/c9/ede8ae87d282c0b37671ca88b9feee32c12e.jpg'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/uploads/55/c9/ede8ae87d282c0b37671ca88b9feee32c12e.jpg'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1525972135.501
+    'REQUEST_TIME' => 1525972135
+    'argv' => []
+    'argc' => 0
+    'CLIENT_ID' => '85b5223a698c76af08e7'
+    'CLIENT_SECRET' => '23d04815f1df9dfd0d2d7e4406e8d3141626dff7'
+    'COOKIE_VALIDATION' => '6mPx35nXiLfpZwqLnK*khALHV6x4tsoq'
+    'DB_HOST' => 'mysql:host=db'
+    'DB_NAME' => 'yii2gallery'
+    'DB_USERNAME' => 'root'
+    'DB_PASSWORD' => 'secret'
+    'CACHE_HOSTNAME' => 'cache'
+    'CACHE_PORT' => '6379'
+]
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "uploads/6d/41/ad06788186bd9a5e03e8c17aa0d79ac00143.jpg". in /app/vendor/yiisoft/yii2/base/Module.php:537
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('uploads/6d/41/a...', Array)
+#1 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /app/web/index.php(14): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /app/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /app/web/index.php(14): yii\base\Application->run()
+#2 {main}
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'f6882ab6adcc9fd2a5c1366c71403f54'
+    '_identity' => '8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a:2:{i:0;s:9:\"_identity\";i:1;s:49:\"[1024,\"ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3\",2592000]\";}'
+    '_csrf' => 'bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"1IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1024
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost:8000'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'
+    'HTTP_ACCEPT' => 'image/webp,image/apng,image/*,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost:8000/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en,ru;q=0.9'
+    'HTTP_COOKIE' => 'PHPSESSID=f6882ab6adcc9fd2a5c1366c71403f54; _identity=8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A49%3A%22%5B1024%2C%22ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3%22%2C2592000%5D%22%3B%7D; _csrf=bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%221IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl%22%3B%7D'
+    'PATH' => '/app:/app/vendor/bin:/root/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.25 (Debian) Server at localhost Port 8000</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.25 (Debian)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '172.18.0.4'
+    'SERVER_PORT' => '8000'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/index.php'
+    'REMOTE_PORT' => '42546'
+    'REDIRECT_URL' => '/uploads/6d/41/ad06788186bd9a5e03e8c17aa0d79ac00143.jpg'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/uploads/6d/41/ad06788186bd9a5e03e8c17aa0d79ac00143.jpg'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1525972135.431
+    'REQUEST_TIME' => 1525972135
+    'argv' => []
+    'argc' => 0
+    'CLIENT_ID' => '85b5223a698c76af08e7'
+    'CLIENT_SECRET' => '23d04815f1df9dfd0d2d7e4406e8d3141626dff7'
+    'COOKIE_VALIDATION' => '6mPx35nXiLfpZwqLnK*khALHV6x4tsoq'
+    'DB_HOST' => 'mysql:host=db'
+    'DB_NAME' => 'yii2gallery'
+    'DB_USERNAME' => 'root'
+    'DB_PASSWORD' => 'secret'
+    'CACHE_HOSTNAME' => 'cache'
+    'CACHE_PORT' => '6379'
+]
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "uploads/23/69/95bfb7b967ab617df1243b11376456c95529.jpg". in /app/vendor/yiisoft/yii2/base/Module.php:537
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('uploads/23/69/9...', Array)
+#1 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /app/web/index.php(14): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /app/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /app/web/index.php(14): yii\base\Application->run()
+#2 {main}
+2018-05-10 17:08:55 [172.18.0.1][1024][f6882ab6adcc9fd2a5c1366c71403f54][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'f6882ab6adcc9fd2a5c1366c71403f54'
+    '_identity' => '8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a:2:{i:0;s:9:\"_identity\";i:1;s:49:\"[1024,\"ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3\",2592000]\";}'
+    '_csrf' => 'bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"1IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1024
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost:8000'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'
+    'HTTP_ACCEPT' => 'image/webp,image/apng,image/*,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost:8000/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en,ru;q=0.9'
+    'HTTP_COOKIE' => 'PHPSESSID=f6882ab6adcc9fd2a5c1366c71403f54; _identity=8ba5e1e930528b45c50bbaf1465e9d2739e10c124964c32685e35b0e5ad7a937a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A49%3A%22%5B1024%2C%22ZxoAQUH_gxYWvOQ4oniVtlGLHikM3AD3%22%2C2592000%5D%22%3B%7D; _csrf=bc0cb87d7ef0005324bb89f4375ba0177786f15da11cce7adc410d865b52de45a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%221IiVrDcC7dyyGp4WSnp1grVdMVUYpRpl%22%3B%7D'
+    'PATH' => '/app:/app/vendor/bin:/root/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.25 (Debian) Server at localhost Port 8000</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.25 (Debian)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '172.18.0.4'
+    'SERVER_PORT' => '8000'
+    'REMOTE_ADDR' => '172.18.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/index.php'
+    'REMOTE_PORT' => '42510'
+    'REDIRECT_URL' => '/uploads/23/69/95bfb7b967ab617df1243b11376456c95529.jpg'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/uploads/23/69/95bfb7b967ab617df1243b11376456c95529.jpg'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1525972135.61
+    'REQUEST_TIME' => 1525972135
+    'argv' => []
+    'argc' => 0
+    'CLIENT_ID' => '85b5223a698c76af08e7'
+    'CLIENT_SECRET' => '23d04815f1df9dfd0d2d7e4406e8d3141626dff7'
+    'COOKIE_VALIDATION' => '6mPx35nXiLfpZwqLnK*khALHV6x4tsoq'
+    'DB_HOST' => 'mysql:host=db'
+    'DB_NAME' => 'yii2gallery'
+    'DB_USERNAME' => 'root'
+    'DB_PASSWORD' => 'secret'
+    'CACHE_HOSTNAME' => 'cache'
+    'CACHE_PORT' => '6379'
+]
