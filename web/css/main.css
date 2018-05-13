@@ -244,12 +244,14 @@ header .header-top .brand-logo h1 span {
   position: relative;
 }
 
-.post-report {
+.post-date {
   border-left: 1px solid #ececec;
   border-right: 0;
   display: inline-block;
   font-family: "Ubuntu", sans-serif;
   font-size: 13px;
+  padding-bottom: 8px;
+  padding-left: 13px;
   position: relative;
 }
 
@@ -477,11 +479,11 @@ header .header-top ul li a {
 }
 
 .profile .author-image {
-  object-fit: cover;
-  border-radius:50%;
+  border-radius: 50%;
   display: inline-block;
   height: 100px;
   width: 100px;
+  object-fit: cover;
 }
 
 .profile-post .author-image {

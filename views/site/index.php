@@ -68,14 +68,8 @@ $this->registerJsFile(
                                             <span class="far fa-thumbs-up"></span>
                                         </button>
                                     </div>
-                                    <div class="post-comments">
-                                        <a href="#">0 Comments</a>
-                                    </div>
                                     <div class="post-date">
                                         <span><?= Yii::$app->formatter->asRelativeTime($feedItem->post_created_at); ?></span>
-                                    </div>
-                                    <div class="post-report">
-                                        <a href="#">Report post</a>
                                     </div>
                                 </div>
                             </article>
