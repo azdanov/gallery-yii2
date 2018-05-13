@@ -6,6 +6,6 @@
 class_name: UnitTester
 modules:
     enabled:
-      - Asserts
-      - Yii2:
+        - Asserts
+        - Yii2:
             part: [orm, email]
